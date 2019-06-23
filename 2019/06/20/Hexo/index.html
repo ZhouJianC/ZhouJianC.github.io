@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="综述 本篇文章主要讲述使用Hexo写博客的一些技巧和注意事项  添加分类和标签  分类   命令行进入博客（hexo）所在的文件夹，执行hexo new page categories,成功后自动生成source/categories/index.md，再修改index.md文件。再给文章添加相应的categories属性。     标签 同理，执行hexo new page tags,再修改对应">
+<meta name="description" content="综述本篇文章主要讲述使用Hexo写博客的一些技巧和注意事项  添加分类和标签 分类   命令行进入博客（hexo）所在的文件夹，执行hexo new page categories,成功后自动生成source/categories/index.md，再修改index.md文件。再给文章添加相应的categories属性。     标签 同理，执行hexo new page tags,再修改对应的i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo usage">
 <meta property="og:url" content="http://yoursite.com/2019/06/20/Hexo/index.html">
 <meta property="og:site_name" content="Striver">
-<meta property="og:description" content="综述 本篇文章主要讲述使用Hexo写博客的一些技巧和注意事项  添加分类和标签  分类   命令行进入博客（hexo）所在的文件夹，执行hexo new page categories,成功后自动生成source/categories/index.md，再修改index.md文件。再给文章添加相应的categories属性。     标签 同理，执行hexo new page tags,再修改对应">
+<meta property="og:description" content="综述本篇文章主要讲述使用Hexo写博客的一些技巧和注意事项  添加分类和标签 分类   命令行进入博客（hexo）所在的文件夹，执行hexo new page categories,成功后自动生成source/categories/index.md，再修改index.md文件。再给文章添加相应的categories属性。     标签 同理，执行hexo new page tags,再修改对应的i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-20T14:41:41.851Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/20/Hexo/图片的地址">
+<meta property="og:updated_time" content="2019-06-23T08:49:43.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo usage">
-<meta name="twitter:description" content="综述 本篇文章主要讲述使用Hexo写博客的一些技巧和注意事项  添加分类和标签  分类   命令行进入博客（hexo）所在的文件夹，执行hexo new page categories,成功后自动生成source/categories/index.md，再修改index.md文件。再给文章添加相应的categories属性。     标签 同理，执行hexo new page tags,再修改对应">
+<meta name="twitter:description" content="综述本篇文章主要讲述使用Hexo写博客的一些技巧和注意事项  添加分类和标签 分类   命令行进入博客（hexo）所在的文件夹，执行hexo new page categories,成功后自动生成source/categories/index.md，再修改index.md文件。再给文章添加相应的categories属性。     标签 同理，执行hexo new page tags,再修改对应的i">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/20/Hexo/图片的地址">
 
 
 
@@ -287,7 +289,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-06-23T16:49:43+08:00">
+                2019-06-23
+              </time>
             
           </span>
 
@@ -341,11 +355,9 @@
       
 
       
-        <h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><hr>
-<p>本篇文章主要讲述使用Hexo写博客的一些技巧和注意事项</p>
+        <h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>本篇文章主要讲述使用Hexo写博客的一些技巧和注意事项</p>
 <hr>
-<h2 id="添加分类和标签"><a href="#添加分类和标签" class="headerlink" title="添加分类和标签"></a>添加分类和标签</h2><hr>
-<ul>
+<h2 id="添加分类和标签"><a href="#添加分类和标签" class="headerlink" title="添加分类和标签"></a>添加分类和标签</h2><ul>
 <li>分类  <blockquote>
 <p>命令行进入博客（hexo）所在的文件夹，执行<code>hexo new page categories</code>,成功后自动生成source/categories/index.md，再修改index.md文件。再给文章添加相应的<code>categories</code>属性。  </p>
 </blockquote>
@@ -356,10 +368,14 @@
 </li>
 </ul>
 <hr>
-<h2 id="如何插入图片"><a href="#如何插入图片" class="headerlink" title="如何插入图片"></a>如何插入图片</h2><hr>
+<h2 id="博客插入图片"><a href="#博客插入图片" class="headerlink" title="博客插入图片"></a>博客插入图片</h2><ol>
+<li><p>使用绝对路径<br>将所有项目的图片都统一放在<code>source/images文件夹中，访问显示图片可用``</code><img src="图片的地址" alt="图片的替代文字" title="可选标题"><code>`</code>，图片的地址如images/image.jpg，这样图片可在首页和文章中都可访问到</p>
+</li>
+<li><p>使用相对路径<br>图片除了可以放在统一的images文件夹中，还可以放在文章自己的目录中，通过配置博客根目录下<code>_config.yml</code>来生成。将其中的配置项<code>post_asset_folder: true</code>后，执行<code>hexo new post_name</code>，在source/_posts中生成文章post_name.md和同名文件夹post_name。我们将图片放在post_name文件夹中，通过image.jpg可直接引用。但是该方法只能在文章中显示图片，为了能在首页显示图片，可以用以下方法：<br>！<a href="/images/Hexo_001.png">显示方法</a></p>
+</li>
+</ol>
 <h2 id="发表博客的步骤"><a href="#发表博客的步骤" class="headerlink" title="发表博客的步骤"></a>发表博客的步骤</h2><hr>
 <h2 id="优化功能"><a href="#优化功能" class="headerlink" title="优化功能"></a>优化功能</h2><hr>
-<p>比如发表时间和更新时间的显示</p>
 
       
     </div>
@@ -515,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#综述"><span class="nav-number">1.</span> <span class="nav-text">综述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加分类和标签"><span class="nav-number">2.</span> <span class="nav-text">添加分类和标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何插入图片"><span class="nav-number">3.</span> <span class="nav-text">如何插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发表博客的步骤"><span class="nav-number">4.</span> <span class="nav-text">发表博客的步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化功能"><span class="nav-number">5.</span> <span class="nav-text">优化功能</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#综述"><span class="nav-number">1.</span> <span class="nav-text">综述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加分类和标签"><span class="nav-number">2.</span> <span class="nav-text">添加分类和标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#博客插入图片"><span class="nav-number">3.</span> <span class="nav-text">博客插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发表博客的步骤"><span class="nav-number">4.</span> <span class="nav-text">发表博客的步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化功能"><span class="nav-number">5.</span> <span class="nav-text">优化功能</span></a></li></ol></div>
             
 
           </div>
