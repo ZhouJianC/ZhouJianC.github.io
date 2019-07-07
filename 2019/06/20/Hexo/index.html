@@ -89,7 +89,7 @@
 <meta property="og:image" content="http://yoursite.com/images/Hexo_001.png">
 <meta property="og:image" content="http://yoursite.com/images/Hexo_002.png">
 <meta property="og:image" content="http://yoursite.com/images/Hexo_003.jpeg">
-<meta property="og:updated_time" content="2019-06-23T13:34:00.252Z">
+<meta property="og:updated_time" content="2019-07-07T13:35:24.966Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo usage">
 <meta name="twitter:description" content="综述本篇文章主要讲述使用Hexo写博客的一些技巧和注意事项  添加分类和标签 分类   命令行进入博客（hexo）所在的文件夹，执行hexo new page categories,成功后自动生成source/categories/index.md，再修改index.md文件。再给文章添加相应的categories属性。     标签 同理，执行hexo new page tags,再修改对应的i">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-23T21:34:00+08:00">
-                2019-06-23
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-07T21:35:24+08:00">
+                2019-07-07
               </time>
             
           </span>
@@ -371,7 +371,7 @@
 </ul>
 <hr>
 <h2 id="博客插入图片"><a href="#博客插入图片" class="headerlink" title="博客插入图片"></a>博客插入图片</h2><ol>
-<li><p>使用绝对路径<br>将所有项目的图片都统一放在`source/images文件夹中，访问显示图片可用绝对地址，图片的地址如images/image.jpg，这样图片可在首页和文章中都可访问到</p>
+<li><p>使用绝对路径<br>将所有项目的图片都统一放在`source/images文件夹中，访问显示图片可用绝对地址，图片的地址如 <strong>/images/image.jpg</strong> ，这样图片可在首页和文章中都可访问到</p>
 </li>
 <li><p>使用相对路径<br>图片除了可以放在统一的images文件夹中，还可以放在文章自己的目录中，通过配置博客根目录下<code>_config.yml</code>来生成。将其中的配置项<code>post_asset_folder: true</code>后，执行<code>hexo new post_name</code>，在source/_posts中生成文章post_name.md和同名文件夹post_name。我们将图片放在post_name文件夹中，通过image.jpg可直接引用。但是该方法只能在文章中显示图片，为了能在首页显示图片，可以用以下方法：<br><img src="/images/Hexo_001.png" alt="显示方法"></p>
 </li>
