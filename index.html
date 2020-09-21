@@ -1323,8 +1323,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-09-20T19:00:27+08:00">
-                2020-09-20
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-21T16:18:03+08:00">
+                2020-09-21
               </time>
             
           </span>
@@ -1421,15 +1421,238 @@
     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleObject <span class="title">getInstance</span><span class="params">()</span> </span>{
         <span class="keyword">return</span> singleObject;
     }
-}
+}  
 </code></pre>
 <blockquote>
 <p>懒汉式与饿汉式的区别  </p>
 <ul>
 <li>饿汉式就是类一旦加载，就会把单例初始化完成，保证<code>getInstance()</code>的时候，单例已经创建好了。  </li>
-<li>懒汉式比较懒，只有在调用<code>getInstance()</code>才初始化这个单例。所以饿汉式是天生线程安全的，懒汉式后期加<code>synchronized</code>同步锁保证线程安全</li>
+<li>懒汉式比较懒，只有在调用<code>getInstance()</code>才初始化这个单例。所以饿汉式是天生线程安全的，懒汉式后期加<code>synchronized</code>同步锁保证线程安全  </li>
 </ul>
 </blockquote>
+<ul>
+<li>双重校验锁（线程安全）</li>
+</ul>
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleObject</span> </span>{
+
+    <span class="comment">// 双重校验锁</span>
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> SingleObject singleObject = <span class="keyword">null</span>;
+
+    <span class="function"><span class="keyword">private</span> <span class="title">SingleObject</span><span class="params">()</span> </span>{}
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleObject <span class="title">getInstance</span><span class="params">()</span> </span>{
+        <span class="comment">// 第一次校验singleObject是否为空</span>
+        <span class="keyword">if</span> (singleObject == <span class="keyword">null</span>) {
+            <span class="keyword">synchronized</span>(SingleObject.class) {
+                <span class="comment">// 第二次校验singleObject是否为空</span>
+                <span class="keyword">if</span> (singleObject == <span class="keyword">null</span>) {
+                    singleObject = <span class="keyword">new</span> SingleObject();
+                }
+            }
+        }
+        <span class="keyword">return</span> singleObject;
+
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) {
+            <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {
+                <span class="meta">@Override</span>
+                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
+                    System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + SingleObject.getInstance().hashCode());
+                }
+            }).start();
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p>为什么是双重校验锁实现单例模式呢？</p>
+<ul>
+<li><p>第一次校验：也就是第一个if（singleton==null），这个是为了代码提高代码执行效率，由于单例模式只要一次创建实例即可，所以当创建了一个实例之后，再次调用getInstance方法就不必要进入同步代码块，不用竞争锁。直接返回前面创建的实例即可。</p>
+</li>
+<li><p>第二次校验：也就是第二个if（singleton==null），这个校验是防止二次创建实例，假如有一种情况，当singleton还未被创建时，线程t1调用getInstance方法，由于第一次判断singleton==null，此时线程t1准备继续执行，但是由于资源被线程t2抢占了，此时t2页调用getInstance方法，同样的，由于singleton并没有实例化，t2同样可以通过第一个if，然后继续往下执行，同步代码块，第二个if也通过，然后t2线程创建了一个实例singleton。此时t2线程完成任务，资源又回到t1线程，t1此时也进入同步代码块，如果没有这个第二个if，那么，t1就也会创建一个singleton实例，那么，就会出现创建多个实例的情况，但是加上第二个if，就可以完全避免这个多线程导致多次创建实例的问题。</p>
+</li>
+</ul>
+<p>所以说：两次校验都必不可少。  </p>
+</blockquote>
+<p><strong>volatile</strong>关键词的作用<br>1、可以防止jvm指令重排优化  </p>
+<blockquote>
+<p>因为 singleton = new Singleton() 这句话可以分为三步：</p>
+</blockquote>
+<ol>
+<li>为 singleton 分配内存空间；</li>
+<li>初始化 singleton；</li>
+<li>将 singleton 指向分配的内存空间。<br>但是由于JVM具有指令重排的特性，执行顺序有可能变成 1-3-2。 指令重排在单线程下不会出现问题，但是在多线程下会导致一个线程获得一个未初始化的实例。例如：线程T1执行了1和3，此时T2调用 getInstance() 后发现 singleton 不为空，因此返回 singleton， 但是此时的 singleton 还没有被初始化。使用 volatile 会禁止JVM指令重排，从而保证在多线程下也能正常执行  </li>
+</ol>
+<p>2、保证变量在多线程运行时的可见性  </p>
+<blockquote>
+<p>在 JDK1.2 之前，Java的内存模型实现总是从主存（即共享内存）读取变量，是不需要进行特别的注意的。而在当前 的 Java 内存模型下，线程可以把变量保存本地内存（比如机器的寄存器）中，而不是直接在主存中进行读写。这就 可能造成一个线程在主存中修改了一个变量的值，而另外一个线程还继续使用它在寄存器中的变量值的拷贝，造成数 据的不一致。 要解决这个问题，就需要把变量声明为 volatile，这就指示 JVM，这个变量是不稳定的，每次使用它都到主存中进行 读取</p>
+</blockquote>
+<hr>
+<h2 id="工厂模式-简单工厂模式"><a href="#工厂模式-简单工厂模式" class="headerlink" title="工厂模式-简单工厂模式"></a>工厂模式-简单工厂模式</h2><blockquote>
+<p>简单工厂模式（Simple Factory Pattern）属于类的创建型模式，又叫静态工厂方法模式（Static FactoryMethod Pattern）,是通过专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类。<br>模式中包含的角色如下：  </p>
+<ul>
+<li>抽象（Product）产品角色：简单工厂模式所创建的所有对象的父类，注意，这里的父类可以是接口也可以是抽象类，它负责描述所有实例所共有的公共接口</li>
+<li>工厂角色（Creator）：这是简单工厂模式的核心，由它负责创建所有的类的内部逻辑。当然工厂类必须能够被外界调用，创建所需要的产品对象</li>
+<li>具体产品（Concrete Product）角色：简单工厂所创建的具体实例对象，这些具体的产品往往都拥有共同的父类  </li>
+</ul>
+<p>简单工厂模式解决的问题是如何去实例化一个合适的对象，<strong>核心思想：有一个专门的类来负责创建实例的过程</strong> 具体来说，把产品看着是一系列的类的集合，这些类是由某个抽象类或者接口派生出来的一个对象树。而工厂类用来产生一个合适的对象来满足客户的要求。如果简单工厂模式所涉及到的具体产品之间没有共同的逻辑，那么我们就可以使用接口来扮演抽象产品的角色；如果具体产品之间有功能的逻辑或，我们就必须把这些共同的东西提取出来，放在一个抽象类中，然后让具体产品继承抽象类。为实现更好复用的目的，共同的东西总是应该抽象出来的。Java中JDBC操作数据库就是典型的简单工厂模式，通过Class.forName()来创建与数据库连接的Connection对象  </p>
+</blockquote>
+<p>实现方式：  </p>
+<pre><code class="java"><span class="comment">/**</span>
+<span class="comment"> * 产品的抽象接口</span>
+<span class="comment"> */</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Food</span> </span>{
+
+    <span class="comment">// 产品的抽象接口</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">()</span></span>;
+}  
+
+<span class="comment">/**</span>
+<span class="comment"> * 薯条对抽象产品接口的实现</span>
+<span class="comment"> */</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chips</span> <span class="keyword">implements</span> <span class="title">Food</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">()</span> </span>{
+        System.out.println(<span class="string">"我需要一份薯条！"</span>);
+    }
+}  
+
+<span class="comment">/**</span>
+<span class="comment"> * 鸡对产品抽象接口的实现</span>
+<span class="comment"> */</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chicken</span> <span class="keyword">implements</span> <span class="title">Food</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">()</span> </span>{
+        System.out.println(<span class="string">"我需要一份鸡！"</span>);
+    }
+}
+
+<span class="comment">/**</span>
+<span class="comment"> * 工厂角色，简单工厂模式的核心</span>
+<span class="comment"> */</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FoodFactory</span> </span>{
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Food <span class="title">getFood</span><span class="params">(String type)</span> <span class="keyword">throws</span> IllegalAccessException, InstantiationException </span>{
+        <span class="keyword">if</span> (type.equalsIgnoreCase(<span class="string">"chicken"</span>)) {
+            <span class="keyword">return</span> Chicken.class.newInstance();
+        } <span class="keyword">else</span> <span class="keyword">if</span> (type.equalsIgnoreCase(<span class="string">"chips"</span>)) {
+            <span class="keyword">return</span> Chips.class.newInstance();
+        } <span class="keyword">else</span> {
+            System.out.println(<span class="string">"找不到相应的实例化的类！"</span>);
+            <span class="keyword">return</span> <span class="keyword">null</span>;
+        }
+    }
+}
+
+<span class="comment">// 客户端测试</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactoryPattern</span> </span>{
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InstantiationException, IllegalAccessException </span>{
+
+        <span class="comment">// 实例化各种食物</span>
+        Food myChicken = FoodFactory.getFood(<span class="string">"Chicken"</span>);
+        Food myChips = FoodFactory.getFood(<span class="string">"Chips"</span>);
+        Food myEggs = FoodFactory.getFood(<span class="string">"Eggs"</span>);
+
+        <span class="comment">// 获取食物</span>
+        <span class="keyword">if</span> (myChicken != <span class="keyword">null</span>) {
+            myChicken.get();
+        }
+
+        <span class="keyword">if</span> (myChips != <span class="keyword">null</span>) {
+            myChips.get();
+        }
+
+        <span class="keyword">if</span> (myEggs != <span class="keyword">null</span>) {
+            myEggs.get();
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p><strong>优点：</strong>工厂类是整个模式的关键所在。它包含必要的判断逻辑，能够根据外界给定的信息，决定究竟应该创建哪个具体类的对象。用户在使用时可以直接根据工厂类去创建所需的实例，而无需了解这些对象是如何创建以及如何组织的。有利于整个软件体系结构的优化。</p>
+<p><strong>缺点：</strong>由于工厂类集中了所有实例的创建逻辑，这就直接导致一旦这个工厂出了问题，所有的客户端都会受到牵连；而且由于简单工厂模式的产品室基于一个共同的抽象类或者接口，这样一来，但产品的种类增加的时候，即有不同的产品接口或者抽象类的时候，工厂类就需要判断何时创建何种种类的产品，这就和创建何种种类产品的产品相互混淆在了一起，违背了单一职责，导致系统丧失灵活性和可维护性。而且更重要的是，<strong>简单工厂模式违背了“开放封闭原则”</strong>，就是违背了“系统对扩展开放，对修改关闭”的原则，因为当我新增加一个产品的时候必须修改工厂类，相应的工厂类就需要重新编译一遍。</p>
+<p><strong>总结：</strong>简单工厂模式分离产品的创建者和消费者，有利于软件系统结构的优化；但是由于一切逻辑都集中在一个工厂类中，导致了没有很高的内聚性，同时也违背了“开放封闭原则”。另外，简单工厂模式的方法一般都是静态的，而静态工厂方法是无法让子类继承的，因此，简单工厂模式无法形成基于基类的继承树结构</p>
+</blockquote>
+<h2 id="工厂模式-工厂方法模式"><a href="#工厂模式-工厂方法模式" class="headerlink" title="工厂模式-工厂方法模式"></a>工厂模式-工厂方法模式</h2><blockquote>
+<p>由于简单工厂模式违背了开闭原则，扩展性差。由于只有一个工厂类，当需要一个新的产品时，整个工厂类都需要修改。因此我们可以设计多个“工厂”，每个工厂只负责生产一个产品。  </p>
+</blockquote>
+<p>实现方法：  </p>
+<pre><code class="java"><span class="comment">// 前面定义产品的接口和实现相应的类（与上面相同）</span>
+
+<span class="comment">// 定义工厂接口</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AllFoodFactory</span> </span>{
+
+    <span class="function"><span class="keyword">public</span> Food <span class="title">getFood</span><span class="params">()</span></span>;
+}
+<span class="comment">// 定义生产鸡的工厂，实现工厂接口</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChickenFactory</span> <span class="keyword">implements</span> <span class="title">AllFoodFactory</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> Food <span class="title">getFood</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> <span class="keyword">new</span> Chicken();
+    }
+}
+<span class="comment">// 定义生产薯条工厂，实现工厂接口</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChipsFactory</span> <span class="keyword">implements</span> <span class="title">AllFoodFactory</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> Food <span class="title">getFood</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> <span class="keyword">new</span> Chips();
+    }
+}
+<span class="comment">// 客户端测试</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactoryPattern</span> </span>{
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InstantiationException, IllegalAccessException </span>{
+        <span class="comment">/**</span>
+<span class="comment">         * 工厂方法模式的客户端</span>
+<span class="comment">         */</span>
+        <span class="comment">// 获取食物</span>
+        AllFoodFactory chickenFactory = <span class="keyword">new</span> ChickenFactory();
+        Food myChicken = chickenFactory.getFood();
+        myChicken.get();
+
+        AllFoodFactory chipsFactory = <span class="keyword">new</span> ChipsFactory();
+        Food myChips = chipsFactory.getFood();
+        myChips.get();
+    }
+
+}
+</code></pre>
+<h2 id="工厂模式-抽象工厂模式"><a href="#工厂模式-抽象工厂模式" class="headerlink" title="工厂模式-抽象工厂模式"></a>工厂模式-抽象工厂模式</h2><blockquote>
+<p>抽象工厂与工厂方法模式相比，这里有多个抽象产品类或者接口存在，每个抽象的类（或者接口）可以派生出多个具体的产品，生产的是系列产品，其工厂接口相对于工厂方法模式而言，是有多个方法的，用来生产不同的抽象产品。</p>
+</blockquote>
+<pre><code class="java"><span class="comment">// interface BigFood</span>
+<span class="comment">// interface SmallFood</span>
+<span class="comment">// class BigChips implements BigFood</span>
+<span class="comment">// class SmallChips implements SmallFood</span>
+
+<span class="comment">// 定义工厂接口</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AllFactory</span></span>{
+    <span class="function"><span class="keyword">public</span> BigFood <span class="title">getFood</span><span class="params">()</span></span>;
+
+    <span class="function"><span class="keyword">public</span> SmallFood <span class="title">getFood</span><span class="params">()</span></span>;
+}  
+
+<span class="comment">// 定义生产薯条的工厂，实现接口</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChipsFactory</span> <span class="keyword">implements</span> <span class="title">AllFactory</span> </span>{
+
+    <span class="function"><span class="keyword">public</span> BigFood <span class="title">getFood</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> <span class="keyword">new</span> BigChips();
+    }
+
+    <span class="function"><span class="keyword">public</span> SmallFood <span class="title">getFood</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> <span class="keyword">new</span> SmallChips();
+    }
+}
+</code></pre>
+<p><strong>总结：</strong></p>
+<blockquote>
+<p>简单工厂模式，工厂类是整个模式的关键所在，包含了必要的逻辑判断，能够外界给定的信息， 决定究竟创建哪个具体类的对象。工厂方法模式 是对简单工厂方法模式的一个抽象，抽离出了一个Factory类(或者接口)，这个接口不负责具体产品的生产，而只是指定一些规范，具体的生产工作由其子类去完成。这个模式中，工厂类和产品类往往是一一对应的，完全解决了简单工厂模式中违背“开闭原则”的问题，实现了可扩展；抽象工厂模式 的特点是存在多个抽象产品类，每个抽象产品类可以派生出多个具体产品类，工厂提供多种方法，去生产“系列”产品。</p>
+<p>简单工厂模式适用于工厂类需要创建的对象比较少的情况，客户只需要传入具体的参数，就可以忽略工厂的生产细节，去获取想要的对象；工厂方法模式，主要是针对单一产品结构的情景；抽象工厂模式则是针对多级产品结构(系列产品)的一种工厂模式。最后在说一下，每种模式都有自己的优点和弊端，没有最好的模式，只有最适合的模式，只要符合实际开发需求就是最好的</p>
+</blockquote>
+<p><strong>博客参考链接：</strong><br>1.<a href="https://blog.csdn.net/yuan_qh/article/details/99962482" target="_blank" rel="noopener">双重校验锁实现单例模式</a><br>2.<a href="https://me.csdn.net/weiwenlongll" target="_blank" rel="noopener">简单工厂模式</a></p>
 
           
         
