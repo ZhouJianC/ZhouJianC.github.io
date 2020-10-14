@@ -452,8 +452,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-09-20T17:00:58+08:00">
-                2020-09-20
+              <time title="更新于" itemprop="dateModified" datetime="2020-10-04T20:01:31+08:00">
+                2020-10-04
               </time>
             
           </span>
@@ -598,7 +598,50 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mirror</span><span class="params">(TreeNode node)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 递归终止条件</span></span><br><span class="line">        <span class="keyword">if</span> (node == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 深度优先搜索，递归操作</span></span><br><span class="line">        TreeNode tmp = node.left;</span><br><span class="line">        node.left = node.right;</span><br><span class="line">        node.right = tmp;</span><br><span class="line">        mirror(node.left);</span><br><span class="line">        mirror(node.right);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">mirrorTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span> || (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">        mirror(root);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Offer-28-对称的二叉树"><a href="#Offer-28-对称的二叉树" class="headerlink" title="Offer 28 对称的二叉树"></a>Offer 28 对称的二叉树</h2><hr>
 <p>请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。示例：输入：root = [1,2,2,3,4,4,3] 输出：true  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSymmetric</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> recur(root.left, root.right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">recur</span><span class="params">(TreeNode l, TreeNode r)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l == <span class="keyword">null</span> &amp;&amp; r == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (l == <span class="keyword">null</span> || r == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (l.val != r.val) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> recur(l.left, r.right) &amp;&amp; recur(l.right, r.left);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSymmetric</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> recur(root.left, root.right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">recur</span><span class="params">(TreeNode l, TreeNode r)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l == <span class="keyword">null</span> &amp;&amp; r == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (l == <span class="keyword">null</span> || r == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (l.val != r.val) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> recur(l.left, r.right) &amp;&amp; recur(l.right, r.left);</span><br><span class="line">    &#125;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">## Offer 29 顺时针打印矩阵</span><br><span class="line"></span><br><span class="line">***</span><br><span class="line">输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字  </span><br><span class="line">输入：matrix = [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],[<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>],[<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]]  </span><br><span class="line">输出：[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">8</span>,<span class="number">12</span>,<span class="number">11</span>,<span class="number">10</span>,<span class="number">9</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>]  </span><br><span class="line">  </span><br><span class="line">```java  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] spiralOrder(<span class="keyword">int</span>[][] matrix) &#123;</span><br><span class="line">        <span class="keyword">if</span> (matrix.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> rows = matrix.length;</span><br><span class="line">        <span class="keyword">int</span> cols = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> len = rows * cols;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line">        <span class="comment">// _r : 这一轮行的起始， r ： 这一轮行的终点</span></span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>, _r = <span class="number">0</span>, r = rows - <span class="number">1</span>, _l = <span class="number">0</span>, l = cols - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="comment">// 左 ——&gt; 右</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> now_l = _l; now_l &lt;= l; now_l++) &#123;</span><br><span class="line">                res[index++] = matrix[_r][now_l];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 判断是否是最后一行了, 保证下面能够进行 上到下</span></span><br><span class="line">            <span class="keyword">if</span> (++_r &gt; r) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 上 --&gt; 下</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> now_r = _r; now_r &lt;= r; now_r++) &#123;</span><br><span class="line">                res[index++] = matrix[now_r][l];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 判断是否是最后一列了，保证下面能够进行 右到左</span></span><br><span class="line">            <span class="keyword">if</span> (--l &lt; _l) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 右 --&gt; 左</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> now_l = l; now_l &gt;= _l; now_l--) &#123;</span><br><span class="line">                res[index++] = matrix[r][now_l];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 判断是否是最后一行了，保证下面能够进行 下到上</span></span><br><span class="line">            <span class="keyword">if</span> (--r &lt; _r) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 下 --&gt; 上</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> now_r = r; now_r &gt;= _r; now_r--) &#123;</span><br><span class="line">                res[index++] = matrix[now_r][_l];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 判断是否是最后一列了，保证下面能够进行 左边到右边</span></span><br><span class="line">            <span class="keyword">if</span> (++_l &gt; l) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Offer-31-栈的压入、弹出序列"><a href="#Offer-31-栈的压入、弹出序列" class="headerlink" title="Offer 31 栈的压入、弹出序列"></a>Offer 31 栈的压入、弹出序列</h2><hr>
+<p>输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如，序列 {1,2,3,4,5} 是某栈的压栈序列，序列 {4,5,3,2,1} 是该压栈序列对应的一个弹出序列，但 {4,3,5,1,2} 就不可能是该压栈序列的弹出序列</p>
+<blockquote>
+<p>我们可以通过一个栈来模拟压栈的过程，通过在这过程中依次比较栈顶元素是否和出栈序列的前面元素相等，则删除并移动比较下一位置</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">validateStackSequences</span><span class="params">(<span class="keyword">int</span>[] pushed, <span class="keyword">int</span>[] popped)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> ele : pushed) &#123;</span><br><span class="line">            stack.push(ele);</span><br><span class="line">            <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; stack.peek() == popped[j]) &#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">```  </span><br><span class="line">  </span><br><span class="line">## Offer 32 - I 从上到下打印二叉树</span><br><span class="line"></span><br><span class="line">***</span><br><span class="line">从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印  </span><br><span class="line">  </span><br><span class="line">```java</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] levelOrder(TreeNode root) &#123;</span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        queue.add(root);</span><br><span class="line">        <span class="keyword">while</span>(queue.size() &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            TreeNode temp = queue.poll();</span><br><span class="line">            <span class="keyword">if</span>(temp != <span class="keyword">null</span>)&#123;</span><br><span class="line">                queue.add(temp.left);</span><br><span class="line">                queue.add(temp.right);</span><br><span class="line">                list.add(temp.val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[list.size()];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; res.length; i++)&#123;</span><br><span class="line">            res[i] = list.get(i).intValue();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Integer List 转 int[] 数组（lambda）</span></span><br><span class="line">        <span class="comment">//int[] res = list.stream().mapToInt(Integer::intValue).toArray();</span></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Offer-32-II-从上到下打印二叉树"><a href="#Offer-32-II-从上到下打印二叉树" class="headerlink" title="Offer 32 - II 从上到下打印二叉树"></a>Offer 32 - II 从上到下打印二叉树</h2><hr>
+<p>从上到下按层打印二叉树，同一层的节点按从左到右的顺序打印，每一层打印到一行  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 队列迭代的方法</span></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root != <span class="keyword">null</span>) &#123;</span><br><span class="line">            queue.add(root);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 存储每一层的节点</span></span><br><span class="line">        List&lt;Integer&gt; tmp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="comment">// for循环倒序才正确，获取第一次队列容量，为当前层的节点个数</span></span><br><span class="line">            <span class="comment">// for循环遍历每一层</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = queue.size(); i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">                TreeNode node  = queue.poll();</span><br><span class="line">                tmp.add(node.val);</span><br><span class="line">                <span class="keyword">if</span> (node.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    queue.add(node.left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    queue.add(node.right);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            res.add(<span class="keyword">new</span> ArrayList(tmp));</span><br><span class="line">            tmp.clear();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 深度优先搜索，递归</span></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        dfs(<span class="number">0</span>, root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 深度优先搜索遍历</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> depth, TreeNode root, List&lt;List&lt;Integer&gt;&gt; lists)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 第一次到达当前层, 创建当前层的存储列表</span></span><br><span class="line">        <span class="keyword">if</span> (lists.size() == depth) &#123;</span><br><span class="line">            lists.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">        lists.get(depth).add(root.val);</span><br><span class="line">        dfs(depth + <span class="number">1</span>, root.left, lists);</span><br><span class="line">        dfs(depth + <span class="number">1</span>, root.right, lists);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Offer-32-III-从上到下打印二叉树"><a href="#Offer-32-III-从上到下打印二叉树" class="headerlink" title="Offer 32 - III 从上到下打印二叉树"></a>Offer 32 - III 从上到下打印二叉树</h2><hr>
+<p>请实现一个函数按照之字形顺序打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右到左的顺序打印，第三行再按照从左到右的顺序打印，其他行以此类推</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root != <span class="keyword">null</span>) &#123;</span><br><span class="line">            queue.add(root);</span><br><span class="line">        &#125;</span><br><span class="line">        LinkedList&lt;Integer&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = queue.size(); i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">                TreeNode node = queue.poll();</span><br><span class="line">                <span class="comment">// 根据当前长度来判断到几层了，然后决定LinkedList双端队列左插还是右插</span></span><br><span class="line">                <span class="keyword">if</span> (res.size() % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                    list.addLast(node.val);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    list.addFirst(node.val);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (node.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    queue.add(node.left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    queue.add(node.right);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            res.add(<span class="keyword">new</span> ArrayList(list));</span><br><span class="line">            list.clear();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Offer-33-二叉搜索树的后序遍历序列"><a href="#Offer-33-二叉搜索树的后序遍历序列" class="headerlink" title="Offer 33 二叉搜索树的后序遍历序列"></a>Offer 33 二叉搜索树的后序遍历序列</h2><hr>
+<p>输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历结果。如果是则返回 true，否则返回 false。假设输入的数组的任意两个数字都互不相同</p>
+<blockquote>
+<p>根据二叉搜索树的性质，对于每一个节点所在的（子）树，它的左子树的所有节点都比当前根节点小，右子树都比根节点大。因此我们可以通过递归的方法，判断每一个子树是否满足这个性质就好了。由于是后序遍历，子树序列的最右边节点是根节点，假设这个子树是二叉搜索树，然后从最左边开始使用索引接力的模式，最终应该到达最右边。然后每一个子树的结果取交集就好。递归终止的条件为，只有一个节点的子树。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">verifyPostorder</span><span class="params">(<span class="keyword">int</span>[] postorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> isOrder(postorder, <span class="number">0</span>, postorder.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOrder</span><span class="params">(<span class="keyword">int</span>[] order, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 递归终止条件</span></span><br><span class="line">        <span class="keyword">if</span> (low &gt;= high) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 遍历左子树</span></span><br><span class="line">        <span class="keyword">int</span> index = low;</span><br><span class="line">        <span class="keyword">while</span> (order[index] &lt; order[high]) &#123;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 遍历右子树</span></span><br><span class="line">        <span class="keyword">int</span> flag = index;</span><br><span class="line">        <span class="keyword">while</span> (order[flag] &gt; order[high])&#123;</span><br><span class="line">            flag++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 判断是否满足 及 子树是否满足</span></span><br><span class="line">        <span class="keyword">return</span> flag == high &amp;&amp; isOrder(order, low, index - <span class="number">1</span>) &amp;&amp; isOrder(order, index, high - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Offer-34-二叉树中和为某一值的路径"><a href="#Offer-34-二叉树中和为某一值的路径" class="headerlink" title="Offer 34 二叉树中和为某一值的路径"></a>Offer 34 二叉树中和为某一值的路径</h2><hr>
+<p>输入一棵二叉树和一个整数，打印出二叉树中节点值的和为输入整数的所有路径。从树的根节点开始往下一直到叶节点所经过的节点形成一条路径  </p>
+<blockquote>
+<p>首先这题涉及到路径的搜索，肯定使用深度优先搜索的方法，使用递归操作。只有搜索到叶子节点，并且当前路径和为给定值时，就算一条路径，因此我们先访问一个节点，再访问其左右节点，依次递归下去，每一次访问中，总和减去当前节点的值，当剩余为0 同时到达根节点时，将当前路径添加到结果中，遍历完左右子树后，再统一剪支，去除当前的节点。同时递归终止的条件为当前节点为空</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    LinkedList&lt;Integer&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; pathSum(TreeNode root, <span class="keyword">int</span> sum) &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ArrayList()&#123;&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(root, sum);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        list.add(root.val);</span><br><span class="line">        sum -= root.val;</span><br><span class="line">        <span class="keyword">if</span> (sum == <span class="number">0</span> &amp;&amp; root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">            res.add(<span class="keyword">new</span> LinkedList(list));</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(root.left, sum);</span><br><span class="line">        dfs(root.right, sum);</span><br><span class="line">        list.removeLast();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Offer-36-二叉搜索树与双向链表"><a href="#Offer-36-二叉搜索树与双向链表" class="headerlink" title="Offer 36 二叉搜索树与双向链表"></a>Offer 36 二叉搜索树与双向链表</h2><hr>
+<p>输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的循环双向链表。要求不能创建任何新的节点，只能调整树中节点指针的指向。我们希望将这个二叉搜索树转化为双向循环链表。链表中的每个节点都有一个前驱和后继指针。对于双向循环链表，第一个节点的前驱是最后一个节点，最后一个节点的后继是第一个节点</p>
+<blockquote>
+<p>首先对于二叉搜索树，其 中序遍历的结果就是一个有序的序列，节点输出有序，因此从中序遍历的过程出发，需要一个全局变量保存前一个节点，然后访问当前节点的时候再作前后操作。还需要一个头结点，当遍历完成后，再作首尾操作。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Node head, pre;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node <span class="title">treeToDoublyList</span><span class="params">(Node root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(root);</span><br><span class="line">        <span class="comment">// 首尾相连</span></span><br><span class="line">        head.left = pre;</span><br><span class="line">        pre.right = head;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Node cur)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (cur == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 中序遍历的模版</span></span><br><span class="line">        dfs(cur.left);</span><br><span class="line">        <span class="comment">// 对当前访问的结点操作</span></span><br><span class="line">        <span class="keyword">if</span> (pre != <span class="keyword">null</span>) &#123;</span><br><span class="line">            pre.right = cur;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            head = cur;</span><br><span class="line">        &#125;</span><br><span class="line">        cur.left = pre;</span><br><span class="line">        <span class="comment">// pre最后指向当前结点，下一次访问就是前一个结点了</span></span><br><span class="line">        pre = cur;</span><br><span class="line">        dfs(cur.right);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Offer-37-序列化二叉树"><a href="#Offer-37-序列化二叉树" class="headerlink" title="Offer 37 序列化二叉树"></a>Offer 37 序列化二叉树</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Encodes a tree to a single string.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">serialize</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"[]"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        queue.add(root);</span><br><span class="line">        res.append(<span class="string">"["</span>);</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            TreeNode node = queue.poll();</span><br><span class="line">            <span class="keyword">if</span> (node == <span class="keyword">null</span>) &#123;</span><br><span class="line">                res.append(<span class="string">"null,"</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            queue.add(node.left);</span><br><span class="line">            queue.add(node.right);</span><br><span class="line">            res.append(node.val + <span class="string">","</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        res.deleteCharAt(res.length() - <span class="number">1</span>);</span><br><span class="line">        res.append(<span class="string">"]"</span>);</span><br><span class="line">        <span class="keyword">return</span> res.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Decodes your encoded data to tree.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">deserialize</span><span class="params">(String data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (data.equals(<span class="string">"[]"</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String[] str = data.substring(<span class="number">1</span>, data.length() - <span class="number">1</span>).split(<span class="string">","</span>);</span><br><span class="line">        TreeNode root = <span class="keyword">new</span> TreeNode(Integer.parseInt(str[<span class="number">0</span>]));</span><br><span class="line">        <span class="keyword">int</span> tag = <span class="number">1</span>;</span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.add(root);</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            TreeNode node = queue.poll();</span><br><span class="line">            <span class="keyword">if</span> (!str[tag].equals(<span class="string">"null"</span>)) &#123;</span><br><span class="line">                node.left = <span class="keyword">new</span> TreeNode(Integer.parseInt(str[tag]));</span><br><span class="line">                queue.add(node.left);</span><br><span class="line">            &#125;</span><br><span class="line">            tag++;</span><br><span class="line">            <span class="keyword">if</span> (!str[tag].equals(<span class="string">"null"</span>)) &#123;</span><br><span class="line">                node.right = <span class="keyword">new</span> TreeNode(Integer.parseInt(str[tag]));</span><br><span class="line">                queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            tag++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Offer-38-字符串的排序"><a href="#Offer-38-字符串的排序" class="headerlink" title="Offer 38 字符串的排序"></a>Offer 38 字符串的排序</h2><hr>
+<p>输入一个字符串， 打印出该字符串中字符的所有排列。你可以以任意的顺序返回这个字符串数组，但是里面不能有重复的元素.例如</p>
+<blockquote>
+<p>输入：s = “abc”<br>输出：[“abc”,”acb”,”bac”,”bca”,”cab”,”cba”]<br>深度优先搜索 + 回溯法</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String[] permute(String s) &#123;</span><br><span class="line">        <span class="keyword">char</span>[] chars = s.toCharArray();</span><br><span class="line">        Arrays.sort(chars);</span><br><span class="line">        <span class="keyword">boolean</span>[] isSearch = <span class="keyword">new</span> <span class="keyword">boolean</span>[chars.length];</span><br><span class="line">        StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        dfs(chars, <span class="number">0</span>, isSearch, res, list);</span><br><span class="line">        <span class="keyword">return</span> list.toArray(<span class="keyword">new</span> String[list.size()]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span>[] chars, <span class="keyword">int</span> depth, <span class="keyword">boolean</span>[] isSearch, StringBuilder res, List&lt;String&gt; list)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (depth == chars.length) &#123;</span><br><span class="line">            list.add(res.toString());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; chars.length; i++) &#123;</span><br><span class="line">            <span class="comment">// 每次遍历只对没有访问的字符操作</span></span><br><span class="line">            <span class="keyword">if</span> (!isSearch[i]) &#123;</span><br><span class="line">                <span class="comment">// 当出现重复字符时，特定条件下跳过</span></span><br><span class="line">                <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; chars[i - <span class="number">1</span>] == chars[i] &amp;&amp; !isSearch[i - <span class="number">1</span>]) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                res.append(chars[i]);</span><br><span class="line">                isSearch[i] = <span class="keyword">true</span>;</span><br><span class="line">                dfs(chars, depth + <span class="number">1</span>, isSearch, res, list);</span><br><span class="line">                res.deleteCharAt(res.length() - <span class="number">1</span>);</span><br><span class="line">                isSearch[i] = <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Offer-39-数组中次数超过一半的数字"><a href="#Offer-39-数组中次数超过一半的数字" class="headerlink" title="Offer 39 数组中次数超过一半的数字"></a>Offer 39 数组中次数超过一半的数字</h2><hr>
+<p>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。你可以假设数组是非空的，并且给定的数组总是存在多数元素。示例：<br>输入: [1, 2, 3, 2, 2, 2, 5, 4, 2]<br>输出: 2</p>
+<blockquote>
+<p>可以通过HashMap来统计，还可以通过“摩尔投票法”，假设当前数字为众数，则若将众数赋值为1，非众数为-1，总和一定大于0.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>, votes = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (votes == <span class="number">0</span>) &#123;</span><br><span class="line">                res = num;</span><br><span class="line">            &#125;</span><br><span class="line">            votes += (num == res ? <span class="number">1</span> : -<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Offer-48-最长不含重复字符的子字符串的长度"><a href="#Offer-48-最长不含重复字符的子字符串的长度" class="headerlink" title="Offer 48 最长不含重复字符的子字符串的长度"></a>Offer 48 最长不含重复字符的子字符串的长度</h2><hr>
 <p>请从字符串中找出一个最长的不包含重复字符的子字符串，计算该最长子字符串的长度</p>
 <blockquote>
@@ -1276,7 +1319,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/20/Design-Patterns/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/06/Compare/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JCZhou">
@@ -1295,7 +1338,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/20/Design-Patterns/" itemprop="url">设计模式</a></h1>
+                <a class="post-title-link" href="/2020/03/06/Compare/" itemprop="url">比较器（Compareable、Compartor)</a></h1>
         
 
         <div class="post-meta">
@@ -1307,8 +1350,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-20T18:59:15+08:00">
-                2019-09-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-06T16:18:58+08:00">
+                2020-03-06
               </time>
             
 
@@ -1323,8 +1366,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-09-21T16:18:03+08:00">
-                2020-09-21
+              <time title="更新于" itemprop="dateModified" datetime="2020-10-06T17:50:45+08:00">
+                2020-10-06
               </time>
             
           </span>
@@ -1342,8 +1385,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Design-Pattern/" itemprop="url" rel="index">
-                    <span itemprop="name">Design Pattern</span>
+                  <a href="/categories/Compare/" itemprop="url" rel="index">
+                    <span itemprop="name">Compare</span>
                   </a>
                 </span>
 
@@ -1381,278 +1424,9 @@
       
         
           
-            <h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><blockquote>
-<p>单例设计模式就是采取一定的方法保证在整个的软件系统中，对于某个类只能存在一个对象实例 ，并且该类只提供一个得到其对象实例的方法。<br>优点：</p>
-<ul>
-<li>某些类创建比较频繁，对于一些大型的对象，这是一笔很大的系统开销</li>
-<li>省去了new操作符，降低了系统内存的使用频率，减轻GC压力</li>
-<li>有些类如交易所的核心交易引擎，控制着交易流程，如果该类可以创建多个的话，系统完全乱了。（比如一个军队出现了多个司令员同时指挥，肯定会乱成一团），所以只有使用单例模式，才能保证核心交易服务器独立控制整个流程.  </li>
-</ul>
+            <h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><blockquote>
+<p>Java中有两个静态工具类：<figure class="highlight plain"><figcaption><span>Set）进行操作。其中类中的方法都是静态的，所以直接使用类名进行调用即可。Collections常用的方法有sort(), 二分查找, 反转。Arrays常用方法有 sort(), binarySearch, copyOf, copyOfRange, toString, asList。 其中两种都有```sort()```方法。对于基本数据类型下 其包装类的对象数组或者集合，是可以直接调用工具类进行排序的。但是对于用户自定义的类对象之间排序，将用到比较器。  </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">&gt; Java 实现对象的排序方式：  </span><br><span class="line">&gt;  </span><br><span class="line">&gt;- 自然排序：java.lang.Comparable</span><br><span class="line">&gt;- 定制排序：java.util.Comparator  </span><br><span class="line">  </span><br><span class="line">## 自然排序：Comparable</span><br><span class="line"></span><br><span class="line">&gt; Comparable接口强行对实现它的每个类的对象进行了整体的排序。对于实现Comparable接口的类必须同时实现compareTo（Object obj）方法。两个对象通过compareTo方法的返回值来比较大小。(升序设置如下)  </span><br><span class="line">&gt;</span><br><span class="line">&gt;- 如果当前对象 this 大于形参对象 obj 则返回正整数</span><br><span class="line">&gt;- 如果当前对象 this 小于 形参对象 obj则返回 负整数</span><br><span class="line">&gt;- 如果当前对象 this 等于 形参对象 obj 则返回零  </span><br><span class="line">&gt;</span><br><span class="line">&gt; 实现 Comparable接口的对象列表（和数组）可以通过 Collections.sort 或 Arrays.sort 进行自动排序。</span><br><span class="line">实现此接口的对象可以用作有序映射中的键或有序集合中的集合，无需指定比较器  </span><br><span class="line">  </span><br><span class="line">```java</span><br><span class="line">public class Student implements Comparable&lt;Student&gt; &#123;</span><br><span class="line">    // 学生的成绩从高到低排序， 若成绩相同 按id从小到大排序</span><br><span class="line">    @Override</span><br><span class="line">    public int compareTo(Student o) &#123;</span><br><span class="line">        if (this.score &gt; o.score) &#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125; else if (this.score &lt; o.score) &#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return this.id - o.id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Student[] students = new Student[3];</span><br><span class="line">        students[0] = new Student(11, 88);</span><br><span class="line">        students[1] = new Student(12, 88);</span><br><span class="line">        students[2] = new Student(13, 89);</span><br><span class="line">        // 排序前</span><br><span class="line">        System.out.println(Arrays.toString(students));</span><br><span class="line">        // 排序</span><br><span class="line">        Arrays.sort(students);</span><br><span class="line">        // 排序后</span><br><span class="line">        System.out.println(Arrays.toString(students));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">结果如下：</span><br><span class="line">&gt; [Student&#123;id=11, score=88.0&#125;, Student&#123;id=12, score=88.0&#125;, Student&#123;id=13, score=89.0&#125;]  </span><br><span class="line">[Student&#123;id=13, score=89.0&#125;, Student&#123;id=11, score=88.0&#125;, Student&#123;id=12, score=88.0&#125;]</span><br><span class="line">  </span><br><span class="line">## 定制排序  </span><br><span class="line">  </span><br><span class="line">&gt; 如果遇到当对象实现了Comparable 接口，但是它的排序方式不适合当前的操作；或者根本没有实现Comparable</span><br><span class="line">接口，而又不方便修改代码。那么可以考虑使用 Comparator 的对象进行排序。  </span><br><span class="line">&gt; 定义一个比较器对象，重写 compare(Object o1,Object o2) 方法，比较 o1 和 o2 的大小(升序设置如下）：</span><br><span class="line">&gt;</span><br><span class="line">&gt;- 如果方法返回正整数，则表示 o1 大于 o2</span><br><span class="line">&gt;- 如果方法返回 0 ，表示相等</span><br><span class="line">&gt;- 如果方法返回负整数，表示o1 小于 o2</span><br><span class="line">&gt;</span><br><span class="line">&gt; 可以将Comparator传递给(Collections和Arrays）的 sort 方法，从而允许在排序顺序上实现精确控制  </span><br><span class="line">  </span><br><span class="line">```java</span><br><span class="line">// 学生的成绩从低到高排序 若成绩相同 按id从高到低排序 // Comparator也可以用lambda表达式来实现</span><br><span class="line">Arrays.sort(students, new Comparator&lt;Student&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public int compare(Student o1, Student o2) &#123;</span><br><span class="line">                if (o1.score == o2.score) &#123;</span><br><span class="line">                    // 两个方法是一样的</span><br><span class="line">                    return - Integer.compare(o1.id, o2.id);</span><br><span class="line">                    //return - Integer.valueOf(o1.id).compareTo(o2.id);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    return Double.compare(o1.score, o2.score);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p>实现方式：  </p>
-<ul>
-<li>懒汉式(线程安全)  </li>
-</ul>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleObject</span> </span>{  
-    <span class="comment">// 定义静态类变量</span>
-    <span class="keyword">private</span> <span class="keyword">static</span> SingleObject singleObject;
-
-    <span class="function"><span class="keyword">private</span> <span class="title">SingleObject</span><span class="params">()</span> </span>{}
-
-    <span class="comment">// 原本是线程不安全的，所以加同步锁 synchronized</span>
-    <span class="comment">// 第一次调用时才初始化</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> SingleObject <span class="title">getInstance</span><span class="params">()</span> </span>{
-        <span class="keyword">if</span> (singleObject == <span class="keyword">null</span>) {
-            singleObject = <span class="keyword">new</span> SingleObject();
-        }
-        <span class="keyword">return</span> singleObject;
-    }
-}
-</code></pre>
-<ul>
-<li>饿汉式(线程安全)  </li>
-</ul>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleObject</span> </span>{
-
-    <span class="keyword">private</span> <span class="keyword">static</span> SingleObject singleObject = <span class="keyword">new</span> SingleObject();
-
-    <span class="function"><span class="keyword">private</span> <span class="title">SingleObject</span><span class="params">()</span> </span>{}
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleObject <span class="title">getInstance</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> singleObject;
-    }
-}  
-</code></pre>
-<blockquote>
-<p>懒汉式与饿汉式的区别  </p>
-<ul>
-<li>饿汉式就是类一旦加载，就会把单例初始化完成，保证<code>getInstance()</code>的时候，单例已经创建好了。  </li>
-<li>懒汉式比较懒，只有在调用<code>getInstance()</code>才初始化这个单例。所以饿汉式是天生线程安全的，懒汉式后期加<code>synchronized</code>同步锁保证线程安全  </li>
-</ul>
-</blockquote>
-<ul>
-<li>双重校验锁（线程安全）</li>
-</ul>
-<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleObject</span> </span>{
-
-    <span class="comment">// 双重校验锁</span>
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> SingleObject singleObject = <span class="keyword">null</span>;
-
-    <span class="function"><span class="keyword">private</span> <span class="title">SingleObject</span><span class="params">()</span> </span>{}
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleObject <span class="title">getInstance</span><span class="params">()</span> </span>{
-        <span class="comment">// 第一次校验singleObject是否为空</span>
-        <span class="keyword">if</span> (singleObject == <span class="keyword">null</span>) {
-            <span class="keyword">synchronized</span>(SingleObject.class) {
-                <span class="comment">// 第二次校验singleObject是否为空</span>
-                <span class="keyword">if</span> (singleObject == <span class="keyword">null</span>) {
-                    singleObject = <span class="keyword">new</span> SingleObject();
-                }
-            }
-        }
-        <span class="keyword">return</span> singleObject;
-
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
-        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) {
-            <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {
-                <span class="meta">@Override</span>
-                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
-                    System.out.println(Thread.currentThread().getName() + <span class="string">":"</span> + SingleObject.getInstance().hashCode());
-                }
-            }).start();
-        }
-    }
-}
-</code></pre>
-<blockquote>
-<p>为什么是双重校验锁实现单例模式呢？</p>
-<ul>
-<li><p>第一次校验：也就是第一个if（singleton==null），这个是为了代码提高代码执行效率，由于单例模式只要一次创建实例即可，所以当创建了一个实例之后，再次调用getInstance方法就不必要进入同步代码块，不用竞争锁。直接返回前面创建的实例即可。</p>
-</li>
-<li><p>第二次校验：也就是第二个if（singleton==null），这个校验是防止二次创建实例，假如有一种情况，当singleton还未被创建时，线程t1调用getInstance方法，由于第一次判断singleton==null，此时线程t1准备继续执行，但是由于资源被线程t2抢占了，此时t2页调用getInstance方法，同样的，由于singleton并没有实例化，t2同样可以通过第一个if，然后继续往下执行，同步代码块，第二个if也通过，然后t2线程创建了一个实例singleton。此时t2线程完成任务，资源又回到t1线程，t1此时也进入同步代码块，如果没有这个第二个if，那么，t1就也会创建一个singleton实例，那么，就会出现创建多个实例的情况，但是加上第二个if，就可以完全避免这个多线程导致多次创建实例的问题。</p>
-</li>
-</ul>
-<p>所以说：两次校验都必不可少。  </p>
-</blockquote>
-<p><strong>volatile</strong>关键词的作用<br>1、可以防止jvm指令重排优化  </p>
-<blockquote>
-<p>因为 singleton = new Singleton() 这句话可以分为三步：</p>
-</blockquote>
-<ol>
-<li>为 singleton 分配内存空间；</li>
-<li>初始化 singleton；</li>
-<li>将 singleton 指向分配的内存空间。<br>但是由于JVM具有指令重排的特性，执行顺序有可能变成 1-3-2。 指令重排在单线程下不会出现问题，但是在多线程下会导致一个线程获得一个未初始化的实例。例如：线程T1执行了1和3，此时T2调用 getInstance() 后发现 singleton 不为空，因此返回 singleton， 但是此时的 singleton 还没有被初始化。使用 volatile 会禁止JVM指令重排，从而保证在多线程下也能正常执行  </li>
-</ol>
-<p>2、保证变量在多线程运行时的可见性  </p>
-<blockquote>
-<p>在 JDK1.2 之前，Java的内存模型实现总是从主存（即共享内存）读取变量，是不需要进行特别的注意的。而在当前 的 Java 内存模型下，线程可以把变量保存本地内存（比如机器的寄存器）中，而不是直接在主存中进行读写。这就 可能造成一个线程在主存中修改了一个变量的值，而另外一个线程还继续使用它在寄存器中的变量值的拷贝，造成数 据的不一致。 要解决这个问题，就需要把变量声明为 volatile，这就指示 JVM，这个变量是不稳定的，每次使用它都到主存中进行 读取</p>
-</blockquote>
-<hr>
-<h2 id="工厂模式-简单工厂模式"><a href="#工厂模式-简单工厂模式" class="headerlink" title="工厂模式-简单工厂模式"></a>工厂模式-简单工厂模式</h2><blockquote>
-<p>简单工厂模式（Simple Factory Pattern）属于类的创建型模式，又叫静态工厂方法模式（Static FactoryMethod Pattern）,是通过专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类。<br>模式中包含的角色如下：  </p>
-<ul>
-<li>抽象（Product）产品角色：简单工厂模式所创建的所有对象的父类，注意，这里的父类可以是接口也可以是抽象类，它负责描述所有实例所共有的公共接口</li>
-<li>工厂角色（Creator）：这是简单工厂模式的核心，由它负责创建所有的类的内部逻辑。当然工厂类必须能够被外界调用，创建所需要的产品对象</li>
-<li>具体产品（Concrete Product）角色：简单工厂所创建的具体实例对象，这些具体的产品往往都拥有共同的父类  </li>
-</ul>
-<p>简单工厂模式解决的问题是如何去实例化一个合适的对象，<strong>核心思想：有一个专门的类来负责创建实例的过程</strong> 具体来说，把产品看着是一系列的类的集合，这些类是由某个抽象类或者接口派生出来的一个对象树。而工厂类用来产生一个合适的对象来满足客户的要求。如果简单工厂模式所涉及到的具体产品之间没有共同的逻辑，那么我们就可以使用接口来扮演抽象产品的角色；如果具体产品之间有功能的逻辑或，我们就必须把这些共同的东西提取出来，放在一个抽象类中，然后让具体产品继承抽象类。为实现更好复用的目的，共同的东西总是应该抽象出来的。Java中JDBC操作数据库就是典型的简单工厂模式，通过Class.forName()来创建与数据库连接的Connection对象  </p>
-</blockquote>
-<p>实现方式：  </p>
-<pre><code class="java"><span class="comment">/**</span>
-<span class="comment"> * 产品的抽象接口</span>
-<span class="comment"> */</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Food</span> </span>{
-
-    <span class="comment">// 产品的抽象接口</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">()</span></span>;
-}  
-
-<span class="comment">/**</span>
-<span class="comment"> * 薯条对抽象产品接口的实现</span>
-<span class="comment"> */</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chips</span> <span class="keyword">implements</span> <span class="title">Food</span> </span>{
-    <span class="meta">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">()</span> </span>{
-        System.out.println(<span class="string">"我需要一份薯条！"</span>);
-    }
-}  
-
-<span class="comment">/**</span>
-<span class="comment"> * 鸡对产品抽象接口的实现</span>
-<span class="comment"> */</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chicken</span> <span class="keyword">implements</span> <span class="title">Food</span> </span>{
-    <span class="meta">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">()</span> </span>{
-        System.out.println(<span class="string">"我需要一份鸡！"</span>);
-    }
-}
-
-<span class="comment">/**</span>
-<span class="comment"> * 工厂角色，简单工厂模式的核心</span>
-<span class="comment"> */</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FoodFactory</span> </span>{
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Food <span class="title">getFood</span><span class="params">(String type)</span> <span class="keyword">throws</span> IllegalAccessException, InstantiationException </span>{
-        <span class="keyword">if</span> (type.equalsIgnoreCase(<span class="string">"chicken"</span>)) {
-            <span class="keyword">return</span> Chicken.class.newInstance();
-        } <span class="keyword">else</span> <span class="keyword">if</span> (type.equalsIgnoreCase(<span class="string">"chips"</span>)) {
-            <span class="keyword">return</span> Chips.class.newInstance();
-        } <span class="keyword">else</span> {
-            System.out.println(<span class="string">"找不到相应的实例化的类！"</span>);
-            <span class="keyword">return</span> <span class="keyword">null</span>;
-        }
-    }
-}
-
-<span class="comment">// 客户端测试</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactoryPattern</span> </span>{
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InstantiationException, IllegalAccessException </span>{
-
-        <span class="comment">// 实例化各种食物</span>
-        Food myChicken = FoodFactory.getFood(<span class="string">"Chicken"</span>);
-        Food myChips = FoodFactory.getFood(<span class="string">"Chips"</span>);
-        Food myEggs = FoodFactory.getFood(<span class="string">"Eggs"</span>);
-
-        <span class="comment">// 获取食物</span>
-        <span class="keyword">if</span> (myChicken != <span class="keyword">null</span>) {
-            myChicken.get();
-        }
-
-        <span class="keyword">if</span> (myChips != <span class="keyword">null</span>) {
-            myChips.get();
-        }
-
-        <span class="keyword">if</span> (myEggs != <span class="keyword">null</span>) {
-            myEggs.get();
-        }
-    }
-}
-</code></pre>
-<blockquote>
-<p><strong>优点：</strong>工厂类是整个模式的关键所在。它包含必要的判断逻辑，能够根据外界给定的信息，决定究竟应该创建哪个具体类的对象。用户在使用时可以直接根据工厂类去创建所需的实例，而无需了解这些对象是如何创建以及如何组织的。有利于整个软件体系结构的优化。</p>
-<p><strong>缺点：</strong>由于工厂类集中了所有实例的创建逻辑，这就直接导致一旦这个工厂出了问题，所有的客户端都会受到牵连；而且由于简单工厂模式的产品室基于一个共同的抽象类或者接口，这样一来，但产品的种类增加的时候，即有不同的产品接口或者抽象类的时候，工厂类就需要判断何时创建何种种类的产品，这就和创建何种种类产品的产品相互混淆在了一起，违背了单一职责，导致系统丧失灵活性和可维护性。而且更重要的是，<strong>简单工厂模式违背了“开放封闭原则”</strong>，就是违背了“系统对扩展开放，对修改关闭”的原则，因为当我新增加一个产品的时候必须修改工厂类，相应的工厂类就需要重新编译一遍。</p>
-<p><strong>总结：</strong>简单工厂模式分离产品的创建者和消费者，有利于软件系统结构的优化；但是由于一切逻辑都集中在一个工厂类中，导致了没有很高的内聚性，同时也违背了“开放封闭原则”。另外，简单工厂模式的方法一般都是静态的，而静态工厂方法是无法让子类继承的，因此，简单工厂模式无法形成基于基类的继承树结构</p>
-</blockquote>
-<h2 id="工厂模式-工厂方法模式"><a href="#工厂模式-工厂方法模式" class="headerlink" title="工厂模式-工厂方法模式"></a>工厂模式-工厂方法模式</h2><blockquote>
-<p>由于简单工厂模式违背了开闭原则，扩展性差。由于只有一个工厂类，当需要一个新的产品时，整个工厂类都需要修改。因此我们可以设计多个“工厂”，每个工厂只负责生产一个产品。  </p>
-</blockquote>
-<p>实现方法：  </p>
-<pre><code class="java"><span class="comment">// 前面定义产品的接口和实现相应的类（与上面相同）</span>
-
-<span class="comment">// 定义工厂接口</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AllFoodFactory</span> </span>{
-
-    <span class="function"><span class="keyword">public</span> Food <span class="title">getFood</span><span class="params">()</span></span>;
-}
-<span class="comment">// 定义生产鸡的工厂，实现工厂接口</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChickenFactory</span> <span class="keyword">implements</span> <span class="title">AllFoodFactory</span> </span>{
-    <span class="meta">@Override</span>
-    <span class="function"><span class="keyword">public</span> Food <span class="title">getFood</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> <span class="keyword">new</span> Chicken();
-    }
-}
-<span class="comment">// 定义生产薯条工厂，实现工厂接口</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChipsFactory</span> <span class="keyword">implements</span> <span class="title">AllFoodFactory</span> </span>{
-    <span class="meta">@Override</span>
-    <span class="function"><span class="keyword">public</span> Food <span class="title">getFood</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> <span class="keyword">new</span> Chips();
-    }
-}
-<span class="comment">// 客户端测试</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactoryPattern</span> </span>{
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InstantiationException, IllegalAccessException </span>{
-        <span class="comment">/**</span>
-<span class="comment">         * 工厂方法模式的客户端</span>
-<span class="comment">         */</span>
-        <span class="comment">// 获取食物</span>
-        AllFoodFactory chickenFactory = <span class="keyword">new</span> ChickenFactory();
-        Food myChicken = chickenFactory.getFood();
-        myChicken.get();
-
-        AllFoodFactory chipsFactory = <span class="keyword">new</span> ChipsFactory();
-        Food myChips = chipsFactory.getFood();
-        myChips.get();
-    }
-
-}
-</code></pre>
-<h2 id="工厂模式-抽象工厂模式"><a href="#工厂模式-抽象工厂模式" class="headerlink" title="工厂模式-抽象工厂模式"></a>工厂模式-抽象工厂模式</h2><blockquote>
-<p>抽象工厂与工厂方法模式相比，这里有多个抽象产品类或者接口存在，每个抽象的类（或者接口）可以派生出多个具体的产品，生产的是系列产品，其工厂接口相对于工厂方法模式而言，是有多个方法的，用来生产不同的抽象产品。</p>
-</blockquote>
-<pre><code class="java"><span class="comment">// interface BigFood</span>
-<span class="comment">// interface SmallFood</span>
-<span class="comment">// class BigChips implements BigFood</span>
-<span class="comment">// class SmallChips implements SmallFood</span>
-
-<span class="comment">// 定义工厂接口</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AllFactory</span></span>{
-    <span class="function"><span class="keyword">public</span> BigFood <span class="title">getFood</span><span class="params">()</span></span>;
-
-    <span class="function"><span class="keyword">public</span> SmallFood <span class="title">getFood</span><span class="params">()</span></span>;
-}  
-
-<span class="comment">// 定义生产薯条的工厂，实现接口</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChipsFactory</span> <span class="keyword">implements</span> <span class="title">AllFactory</span> </span>{
-
-    <span class="function"><span class="keyword">public</span> BigFood <span class="title">getFood</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> <span class="keyword">new</span> BigChips();
-    }
-
-    <span class="function"><span class="keyword">public</span> SmallFood <span class="title">getFood</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> <span class="keyword">new</span> SmallChips();
-    }
-}
-</code></pre>
-<p><strong>总结：</strong></p>
-<blockquote>
-<p>简单工厂模式，工厂类是整个模式的关键所在，包含了必要的逻辑判断，能够外界给定的信息， 决定究竟创建哪个具体类的对象。工厂方法模式 是对简单工厂方法模式的一个抽象，抽离出了一个Factory类(或者接口)，这个接口不负责具体产品的生产，而只是指定一些规范，具体的生产工作由其子类去完成。这个模式中，工厂类和产品类往往是一一对应的，完全解决了简单工厂模式中违背“开闭原则”的问题，实现了可扩展；抽象工厂模式 的特点是存在多个抽象产品类，每个抽象产品类可以派生出多个具体产品类，工厂提供多种方法，去生产“系列”产品。</p>
-<p>简单工厂模式适用于工厂类需要创建的对象比较少的情况，客户只需要传入具体的参数，就可以忽略工厂的生产细节，去获取想要的对象；工厂方法模式，主要是针对单一产品结构的情景；抽象工厂模式则是针对多级产品结构(系列产品)的一种工厂模式。最后在说一下，每种模式都有自己的优点和弊端，没有最好的模式，只有最适合的模式，只要符合实际开发需求就是最好的</p>
-</blockquote>
-<p><strong>博客参考链接：</strong><br>1.<a href="https://blog.csdn.net/yuan_qh/article/details/99962482" target="_blank" rel="noopener">双重校验锁实现单例模式</a><br>2.<a href="https://me.csdn.net/weiwenlongll" target="_blank" rel="noopener">简单工厂模式</a></p>
 
           
         
@@ -1701,7 +1475,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/Search-Algorithm/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/HashMap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JCZhou">
@@ -1720,7 +1494,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/10/Search-Algorithm/" itemprop="url">查找算法</a></h1>
+                <a class="post-title-link" href="/2020/03/04/HashMap/" itemprop="url">HashMap</a></h1>
         
 
         <div class="post-meta">
@@ -1732,8 +1506,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-10T10:25:23+08:00">
-                2019-07-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-04T20:23:21+08:00">
+                2020-03-04
               </time>
             
 
@@ -1748,8 +1522,576 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-09-14T23:33:58+08:00">
-                2020-09-14
+              <time title="更新于" itemprop="dateModified" datetime="2020-10-04T20:25:27+08:00">
+                2020-10-04
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Map/" itemprop="url" rel="index">
+                    <span itemprop="name">Map</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/14/MySql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JCZhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Striver">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/14/MySql/" itemprop="url">MySql</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-14T10:09:37+08:00">
+                2019-10-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-10-14T20:15:45+08:00">
+                2020-10-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="MySql引擎"><a href="#MySql引擎" class="headerlink" title="MySql引擎"></a>MySql引擎</h2><blockquote>
+<p><code>MyISAM</code> 和 <code>InnoDB</code>（5.5之后默认）<br>对比：<br>是否支持行级锁：MyISAM只支持表级锁，而InnoDB支持行级锁（默认）和表级锁<br>是否支持事务和崩溃后的安全恢复：MyISAM强调性能，每次查询都是原子性，不支持事务；InnoDB提供事务、外键，具有事务、回滚、和崩溃修复能力。<br>是否支持外键：MyISAM不支持，另一支持<br>是否支持MVCC：仅InnoDB支持</p>
+</blockquote>
+<h2 id="MySql索引"><a href="#MySql索引" class="headerlink" title="MySql索引"></a>MySql索引</h2><p>MySql中使用的索引主要有<strong>BTree</strong>和<strong>哈希索引</strong>，哈希索引底层是哈希表，在绝大数的单条记录查询的时候，可以选择，速度快</p>
+<blockquote>
+<p>MySql的BTree索引使用的是B树中B+树，但是两种引擎的实现方式是不同的</p>
+<ul>
+<li>MyISAM: B+树的节点的data域存放的是数据记录的地址。在索引检索的时候，首先按照B+Tree搜索算法搜索索引，如果指定的Key存在，则取出其 data 域的值，然后以 data 域的值为地址读取相应的数据记录。这被称为“非聚簇索引”</li>
+<li>InnoDB: 其数据文件本身就是索引文件。相比MyISAM，索引文件和数据文件是分离的，其表数据文件本身就是按B+Tree组织的一个索引结构，树的叶节点data域保存了完整的数据记录。这个索引的key是数据表的主键，因此InnoDB表数据文件本身就是主索引。这被称为“聚簇索引（或聚集索引）”。而其余的索引都作为辅助索引，辅助索引的data域存储相应记录主键的值而不是地址，这也是和MyISAM不同的地方。在根据主索引搜索时，直接找到key所在的节点即可取出数据；在根据辅助索引查找时，则需要先取出主键的值，再走一遍主索引。 因此，在设计表的时候，不建议使用过长的字段作为主键，也不建议使用非单调的字段作为主键，这样会造成主索引频繁分裂</li>
+</ul>
+</blockquote>
+<h2 id="索引的结构"><a href="#索引的结构" class="headerlink" title="索引的结构"></a>索引的结构</h2><blockquote>
+<p>为什么使用B树/B+树作为数据库的索引：因为数据都是在磁盘中，读取数据的时候，磁盘有盘片旋转和磁臂移动的操作，这是一个磁盘定位的过程，通过B树进行优化，可以提高磁盘的读取定位的效率。构建多阶B树，保证层数尽量的少，在尽量多的节点上存储相关信息。总的来说B/B+树是为了磁盘或其它存储设备而设计的一种平衡多路查找树(相对于二叉，B树每个内节点有多个分支)。<br>为什么说B+树比B树更适合数据库索引：B+树的磁盘读写代价更低，B+树的内部节点并没有指向关键字具体信息的指针，因此其内部节点相对B树更小；B+树的查询效率更加稳定，任何关键字的查找必须走一条从根结点到叶子结点的路，关键字查询的路径长度相同</p>
+</blockquote>
+<p><strong>索引失效</strong>的场景，变成了全表扫描：</p>
+<blockquote>
+<ul>
+<li>未使用建立索引的列作为查询条件</li>
+<li>使用like时，%通配符在前</li>
+<li>查询条件中使用OR，is not null，!=, &lt;&gt;</li>
+<li>对索引列进行了函数运算</li>
+<li>字符串不加单引号</li>
+<li>没有遵守最佳左前缀原则（如果索引了多个列，查询要从索引的最左前列开始并且不跳过索引中的列）</li>
+</ul>
+</blockquote>
+<h2 id="MySql事务"><a href="#MySql事务" class="headerlink" title="MySql事务"></a>MySql事务</h2><p><strong>事务</strong>是一组Sql语句或者一个独立运行的工作单元，要么全部执行，要么全部不执行。事务的四大特性：</p>
+<blockquote>
+<ul>
+<li>原子性</li>
+<li>一致性</li>
+<li>隔离性</li>
+<li>持久性</li>
+</ul>
+</blockquote>
+<p>当多个事务同时操作同一个数据库的相同数据时，就会出现问题：</p>
+<blockquote>
+<ul>
+<li>脏读：两个事务T1和T2，T1读取了被T2更新但是还没有提交的数据，由于T2数据还未提交，所以T1读到了“脏数据”</li>
+<li>不可重复读：T1事务多次读取一个数据时，另外一个事务T2也访问了该数据，T2事务修改了数据导致T1事务两次读取的数据可能不一样</li>
+<li>幻读：与不可重复读类似，事务T1读取了几行数据，接着T2事务插入了一些数据。然后T1事务在随后的查询中发现一些原本不存在的记录<br>不可重复读的重点是修改比如多次读取一条记录发现其中某些列的值被修改，幻读的重点在于新增或者删除比如多次读取一条记录发现记录增多或减少了</li>
+</ul>
+</blockquote>
+<p><strong>事务的隔离级别</strong>，在SQL标准定义了四个隔离级别</p>
+<blockquote>
+<ul>
+<li>READ-UNCOMMITTED(读未提交) ： 最低的隔离级别，允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读</li>
+<li>READ-COMMMITED(读已提交) ： 允许读取并发事务已经提交的数据，可以阻止脏读，但是幻读或不可重复读仍有可能发生</li>
+<li>REPEARABLE-READ(可重复读) ： 对同一字段的多次读取结果都是一致的，除非数据是被本身事务自己所修改，可以阻止脏读和不可重复读，但幻读仍有可能发生</li>
+<li>SERIALIABLE(可串行化) ：最高的隔离级别，完全服从ACID的隔离级别。所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，该级别可以防止脏读、不可重复读以及幻读<br>InnoDB默认支持可重复读的隔离级别，采用了Next-Key Lock锁算法，可以避免幻读</li>
+</ul>
+</blockquote>
+<h2 id="数据库优化"><a href="#数据库优化" class="headerlink" title="数据库优化"></a>数据库优化</h2><p>查找范围缩小、读写分离、水平分区、垂直分区、使用索引</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/14/Redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JCZhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Striver">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/14/Redis/" itemprop="url">Redis</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-14T10:09:28+08:00">
+                2019-10-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-10-14T20:20:40+08:00">
+                2020-10-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Redis-数据结构及应用场景"><a href="#Redis-数据结构及应用场景" class="headerlink" title="Redis 数据结构及应用场景"></a>Redis 数据结构及应用场景</h2><blockquote>
+<p>String<br>Hash<br>List<br>Set<br>ZSet</p>
+</blockquote>
+<h2 id="Redis-单线程模型"><a href="#Redis-单线程模型" class="headerlink" title="Redis 单线程模型"></a>Redis 单线程模型</h2><p>NIO多路复用技术(BIO\NIO\xNO的区别)</p>
+<h2 id="Redis-过期数据删除策略"><a href="#Redis-过期数据删除策略" class="headerlink" title="Redis 过期数据删除策略"></a>Redis 过期数据删除策略</h2><blockquote>
+<ul>
+<li>惰性删除 ： 只会在取出key的时候进行过期检查，对CPU友好，容易导致太多过期key未删除</li>
+<li>定期删除 ： 每隔一段时间抽取一批key执行删除过期key操作。对内存友好</li>
+<li>Redis采用两种方式结合。但是还是会漏掉很多过期key，所以还需要Redis内存淘汰机制</li>
+</ul>
+</blockquote>
+<h2 id="Redis-内存淘汰机制"><a href="#Redis-内存淘汰机制" class="headerlink" title="Redis 内存淘汰机制"></a>Redis 内存淘汰机制</h2><blockquote>
+<ul>
+<li>volatile-lru(least recently used) : 从已设置过期时间的数据集中挑选最近最少使用的数据淘汰</li>
+<li>volatile-ttl : 从已设置过期时间的数据集中挑选将要过期的数据淘汰</li>
+<li>volatile-random : 从已设置过期时间的数据集中任意选择数据淘汰</li>
+<li>allkeys-lru(least recently used) : 当内存不足以容纳新写入的数据时， 在键空间中， 移除最近最少使用（最常用策略）</li>
+<li>allkeys-random : 从数据集任意选择淘汰</li>
+<li>no-eviction : 内存不足，写入报错，禁止驱逐数据。</li>
+<li>4.0之后加的策略</li>
+<li>volatile-lfu（least frequently used) : 从已设置过期时间的数据中选择最不经常使用的淘汰</li>
+<li>allkeys-lfu : 内存不足，移除最不经常使用的key</li>
+</ul>
+</blockquote>
+<h2 id="Redis-持久化机制"><a href="#Redis-持久化机制" class="headerlink" title="Redis 持久化机制"></a>Redis 持久化机制</h2><blockquote>
+<ul>
+<li>快照（snapshotting）持久化 （RDB）： Redis默认采用的持久化方式（Redis.conf默认配置 ： save  time  key变化个数），通过创建快照来获得内存数据在某个时间节点上的副本。之后可以将快照备份到其它服务器上（Redis主从结构）</li>
+<li>只追加文件（append-only file) 持久化（AOF），配置文件中有三种不同的AOF持久化方式（appendfsync always ：每次数据修改就写入；appendfsync everysec ： 每秒同步一次写入磁盘； appendfsysc no： os自己决定）</li>
+</ul>
+</blockquote>
+<h2 id="Redis-事务"><a href="#Redis-事务" class="headerlink" title="Redis 事务"></a>Redis 事务</h2><blockquote>
+<p>Redis事务一次可以执行多个命令，能够保证（批量操作在发送<code>EXEC</code>命令之前都会被加入队列缓存；收到EXEC命令之后进入事务执行，其中任意命令执行失败，其余命令依然能够被执行，所以不支持回滚（不支持原子性和持久化）；在事务执行过程中其它客户端的命令请求都不会插入执行序列中）  </p>
+<ul>
+<li>开始事务（<code>MULTI</code>）</li>
+<li>命令入队</li>
+<li>执行事务 (EXEC)</li>
+</ul>
+<p><code>DISCARD</code>(取消事务)； <code>WATCH</code>对key的监视</p>
+</blockquote>
+<h2 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h2><blockquote>
+<p>大量请求的key根本不在缓存中，导致这些请求到了数据库上<br>解决的方法: 最基本的是首先做好参数校验，不合法的参数（数据库的id&lt;0, 邮箱格式不对等）直接返回客户端。具体的有如下：</p>
+<ul>
+<li><strong>缓存无效key</strong> ：如果缓存和数据库都差不到某个key的数据，可以将key放入缓存，设置一个小的过期时间</li>
+<li><strong>布隆过滤器</strong> ： 判断一个给定数据是否存在于海量的数据中。加在缓存之前，可能存在误判。如果判断元素不存在，那么一定不存在；如果判断存在，可能有小概率的误判。</li>
+</ul>
+<p><strong>布隆过滤器</strong><br>当一个元素加入布隆过滤器的时候，通过几个哈希函数得到几个哈希值，根据哈希值把对应的数组下表置为1<br>当判断一个元素是否存在于布隆过滤器的时候，同样进行哈希运算，然后判断位数组中每个元素是否为1， 只要存在一个不为1，就不存在。<br>由于不同的字符串的哈希值相同，所以有可能位置上被其它key置为1了，这就是存在时候可能的误判原因</p>
+</blockquote>
+<h2 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h2><blockquote>
+<p>缓存在同一时间大面积的失效，后面的请求都直接落到了数据库上，造成数据库短时间内承受大量的请求；或者有一些被大量访问数据（热点缓存）在某一时刻大面积失效，导致对应的请求直接落到了数据库上<br>解决的办法</p>
+<ul>
+<li><strong>针对Redis服务不可用</strong> ： 采用Redis集群； 限流，避免同时处理大量请求</li>
+<li><strong>针对热点缓存失效</strong> ： 设置不同的失效时间比如随机设置； 缓存永不失效</li>
+</ul>
+</blockquote>
+<h2 id="缓存和数据库数据的一致性"><a href="#缓存和数据库数据的一致性" class="headerlink" title="缓存和数据库数据的一致性"></a>缓存和数据库数据的一致性</h2><blockquote>
+<p>Cache Aside Pattern*(旁路缓存模式)：遇到请求，更新DB，然后直接删除cache。如果缓存删除失败可以增加cache更新重试机制，将更新失败的key存入队列</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/11/Package-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JCZhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Striver">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/11/Package-01/" itemprop="url">01背包问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-11T16:26:26+08:00">
+                2019-10-11
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-10-14T20:21:14+08:00">
+                2020-10-14
               </time>
             
           </span>
@@ -1806,620 +2148,7 @@
       
         
           
-            <h2 id="编辑中"><a href="#编辑中" class="headerlink" title="编辑中"></a>编辑中</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/Sort-Algorithm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JCZhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Striver">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/02/Sort-Algorithm/" itemprop="url">排序算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-02T10:25:23+08:00">
-                2019-07-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-09-14T23:41:38+08:00">
-                2020-09-14
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构与算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-综述"><a href="#1-综述" class="headerlink" title="1. 综述"></a>1. 综述</h2><p>  本篇博客主要讲述几种常见的排序算法，其算法思想和实现过程。<br>  常见术语：</p>
-<blockquote>
-<p><strong>稳定性</strong>：两个数a和b，且a = b，排序后a和b前后顺序不变，反之不稳定。<br><strong>时间复杂度</strong>：一个算法执行所耗费的时间<br><strong>空间复杂度</strong>：运行完算法所需内存的大小<br><strong>内排序</strong>：所有排序操作都在内存中进行<br><strong>外排序</strong>：数据太大，排序操作需要内存和磁盘之间数据传输完成  </p>
-</blockquote>
-<p>算法总结：  </p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">排序算法</th>
-<th style="text-align:center">平均时间复杂度</th>
-<th style="text-align:center">最好情况</th>
-<th style="text-align:center">最坏情况</th>
-<th style="text-align:center">空间复杂度</th>
-<th style="text-align:center">排序方式</th>
-<th style="text-align:center">稳定性</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">冒泡排序</td>
-<td style="text-align:center">O(n^2)</td>
-<td style="text-align:center">O(n)</td>
-<td style="text-align:center">O(n^2)</td>
-<td style="text-align:center">O(1)</td>
-<td style="text-align:center">内排序</td>
-<td style="text-align:center">稳定</td>
-</tr>
-<tr>
-<td style="text-align:center">选择排序</td>
-<td style="text-align:center">O(n^2)</td>
-<td style="text-align:center">O(n^2)</td>
-<td style="text-align:center">O(n^2)</td>
-<td style="text-align:center">O(1)</td>
-<td style="text-align:center">内排序</td>
-<td style="text-align:center">不稳定</td>
-</tr>
-<tr>
-<td style="text-align:center">插入排序</td>
-<td style="text-align:center">O(n^2)</td>
-<td style="text-align:center">O(n)</td>
-<td style="text-align:center">O(n^2)</td>
-<td style="text-align:center">O(1)</td>
-<td style="text-align:center">内排序</td>
-<td style="text-align:center">稳定</td>
-</tr>
-<tr>
-<td style="text-align:center">希尔排序</td>
-<td style="text-align:center">O(nlog2n)</td>
-<td style="text-align:center">O(nlog2n)</td>
-<td style="text-align:center">O(nlog2n)</td>
-<td style="text-align:center">O(1)</td>
-<td style="text-align:center">内排序</td>
-<td style="text-align:center">不稳定</td>
-</tr>
-<tr>
-<td style="text-align:center">快速排序</td>
-<td style="text-align:center">O(nlogn)</td>
-<td style="text-align:center">O(nlogn)</td>
-<td style="text-align:center">O(n^2)</td>
-<td style="text-align:center">O(1)</td>
-<td style="text-align:center">内排序</td>
-<td style="text-align:center">不稳定</td>
-</tr>
-<tr>
-<td style="text-align:center">堆排序</td>
-<td style="text-align:center">O(nlogn)</td>
-<td style="text-align:center">O(nlogn)</td>
-<td style="text-align:center">O(nlogn)</td>
-<td style="text-align:center">O(1)</td>
-<td style="text-align:center">内排序</td>
-<td style="text-align:center">不稳定</td>
-</tr>
-<tr>
-<td style="text-align:center">归并排序</td>
-<td style="text-align:center">O(nlogn)</td>
-<td style="text-align:center">O(nlogn)</td>
-<td style="text-align:center">O(nlogn)</td>
-<td style="text-align:center">O(n)</td>
-<td style="text-align:center">外排序</td>
-<td style="text-align:center">稳定</td>
-</tr>
-</tbody>
-</table>
-<h2 id="2-插入排序"><a href="#2-插入排序" class="headerlink" title="2. 插入排序"></a>2. 插入排序</h2><ul>
-<li><p>直接插入排序  </p>
-<blockquote>
-<p>插入排序的基本思想就是将无序序列插入到有序序列中。例如要将数组arr=[4,2,8,0,5,1]排序，可以将4看做是一个有序序列(图中用蓝色标出)，将[2,8,0,5,1]看做一个无序序列。无序序列中2比4小，于是将2插入到4的左边，此时有序序列变成了[2,4]，无序序列变成了[8,0,5,1]。无序序列中8比4大，于是将8插入到4的右边，有序序列变成了[2,4,8],无序序列变成了[0,5,1]。以此类推，最终数组按照从小到大排序。该算法的时间复杂度为O(n^2)  </p>
-</blockquote>
-<p>  <img src="/images/Sort_Algorithm_01.png" alt="直接插入排序"></p>
-<p>  代码实现</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">InsertionSortI</span><span class="params">(<span class="keyword">int</span> []arr, <span class="keyword">int</span> length)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &gt; <span class="number">0</span>; j-- )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j] &lt; arr[j-<span class="number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = arr[j];</span><br><span class="line">                arr[j] = arr[j-<span class="number">1</span>];</span><br><span class="line">                arr[j - <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>希尔排序</p>
-<blockquote>
-<p>希尔排序实在直接插入排序后的改进版本，也称为缩小增量排序，先将待排序列分为若干子序列，进行直接插入排序，最后等整个序列“基本有序”，再进行一次直接插入排序。其基本思想是将组内元素按一定增量分组，每组按直接插入排序算法排序；随着增量逐渐减少，每组包含的元素越来越多，当增量减为1时，恰好分为一组，再进行一次直接插入排序，完成算法。其中第一次增量为<code>gap=length/2</code>,增量以<code>gap/2</code>减少至1（length为待排序列的长度）  </p>
-</blockquote>
-<p> 代码实现  </p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ShellSort</span><span class="params">(<span class="keyword">int</span> []arr, <span class="keyword">int</span> length)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp, gap = length/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span>(gap &gt; <span class="number">0</span>) <span class="comment">//外循环，表示进行几轮</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = gap; i &lt; length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//每轮中各组交替进行插入排序</span></span><br><span class="line">            temp = gap;</span><br><span class="line">            <span class="keyword">int</span> preIndex = i - gap;</span><br><span class="line">            <span class="keyword">while</span>(preIndex &gt;= <span class="number">0</span> &amp;&amp; arr[preIndex] &gt; temp)</span><br><span class="line">            &#123;</span><br><span class="line">                arr[preIndex + gap] = arr[preIndex];</span><br><span class="line">                preIndex -= gap;</span><br><span class="line">            &#125;</span><br><span class="line">            arr[preIndex + gap] = temp; <span class="comment">//插入合适的位置</span></span><br><span class="line">        &#125;</span><br><span class="line">        gap /= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="3-选择排序"><a href="#3-选择排序" class="headerlink" title="3. 选择排序"></a>3. 选择排序</h2><ul>
-<li><p>简单选择排序</p>
-<blockquote>
-<p>基本思想：每一趟在待排序列的<code>n-i+1(i=1、2...n-1)</code>的记录中选取关键字最小（大）的记录作为有序序列的第i个记录。算法的时间复杂度为O(n^2)  </p>
-</blockquote>
-<p> 代码实现</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SelectSort</span><span class="params">(<span class="keyword">int</span> []arr, <span class="keyword">int</span> length)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> minIndex = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt; length; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j] &lt; arr[minIndex])</span><br><span class="line">            &#123;</span><br><span class="line">                minIndex = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">        arr[i] = arr[minIndex];</span><br><span class="line">        arr[minindex] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>堆排序</p>
-<blockquote>
-<p>堆排序是用数据结构–堆，进行排序。可以将堆看做一个完全二叉树，并且当每个结点的值都大于等于其左右孩子，这称为大顶堆；若小于等于，则称为小顶堆。堆排序是先将序列构造成一个大顶堆（小顶堆），则序列的最大值（最小值）就是堆顶元素，也是根结点。之后将根结点与末尾元素进行交换，此时末尾元素就是最大值（最小值），再将剩下的n-1个元素建堆，得到次大值（次小值），依次类推得到有序序列。堆排序的过程包括 <strong>建堆过程</strong> 和 <strong>堆调整过程</strong>,同时也使用了递归思想。</p>
-</blockquote>
-<p>代码实现</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">//建堆过程函数，其中递归调用了堆调整的方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">HeapSort</span><span class="params">(<span class="keyword">int</span> []arr, <span class="keyword">int</span> length)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = length / <span class="number">2</span> -<span class="number">1</span>; i &gt;=<span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//第一次建堆过程,从最后一个非叶结点开始进行调整</span></span><br><span class="line">        HeapAdjust(arr, i, length)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = length - <span class="number">1</span>; j &gt; <span class="number">0</span>; j--)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="keyword">int</span> temp = arr[<span class="number">0</span>];</span><br><span class="line">       arr[<span class="number">0</span>] = arr[j];</span><br><span class="line">       arr[j] = temp;</span><br><span class="line">       HeapAdjust(arr, <span class="number">0</span>, j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//堆调整方法，调整数组arr的第i个结点，新堆长度为length</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">HeapAdjust</span><span class="params">(<span class="keyword">int</span> []arr, <span class="keyword">int</span> i, <span class="keyword">int</span> length)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> max = i; <span class="comment">//堆初始下标为0</span></span><br><span class="line">    <span class="keyword">int</span> lchild = <span class="number">2</span> * i + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> rchild = <span class="number">2</span> * i + <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(lchild &lt; length &amp;&amp; arr[lchild] &gt; arr[max])</span><br><span class="line">    &#123;</span><br><span class="line">        max = lchild;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(rchild &lt; length &amp;&amp; arr[rchild] &gt; arr[max])</span><br><span class="line">    &#123;</span><br><span class="line">        max = rchild;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断该位置是否调整，则进行位置调换并向下调整</span></span><br><span class="line">    <span class="keyword">if</span>(max != i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">        arr[i] = arr[max];</span><br><span class="line">        arr[max] = temp;</span><br><span class="line">        HeapAdjust(arr, max, length);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="4-交换排序"><a href="#4-交换排序" class="headerlink" title="4. 交换排序"></a>4. 交换排序</h2><ul>
-<li><p>冒泡排序</p>
-<blockquote>
-<p>最简单的一种排序算法，首先从待排序列的第一个元素开始到最后一个元素为止，对相邻的两个元素进行比较，若左边元素大于（小于）右边的元素，则交换位置。一轮过后，则最后一个位置的元素为最大值（最小值）。接着对剩下的n-1个元素进行冒泡排序，直到达到有序序列。  </p>
-</blockquote>
-<p>代码实现</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(<span class="keyword">int</span> []arr, <span class="keyword">int</span> length)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(length &lt;= <span class="number">1</span>)</span><br><span class="line">       <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; length - i - <span class="number">1</span>; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j] &gt; arr[j + <span class="number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>快速排序</p>
-<blockquote>
-<p>快速排序使用 <strong>分治法</strong> ，把一个串分为两个子串。基本思想：挑选一个元素作为“基准”（一般选择第一个元素），经过一趟排序后，将小于基准的元素放在基准元素前面，大于的放在基准元素后面，以基准值为分界线，分为两个子序列，同时基准值位置为最终位置。接着对两个子序列分别进行递归算法调用快速排序。 具体做法：设置两个指针low、high分别指向待排序列的开头和末尾，记录下基准值（待排序列的第一个元素），然后先从high指针开始向前走，找到小于基准值的元素并停下，之后low指针向后走，找到大于基准值的元素并停下，在两个指针位置没有重合的情况下，并且都停下后，则交换两个指针所指的元素，继续往前往后走，当两个指针重合后，则交换基准位置和指针位置，第一轮结束，分为以基准值为分界线的两个子序列。递归继续</p>
-</blockquote>
-<p>代码实现</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> []arr, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = low;</span><br><span class="line">    <span class="keyword">int</span> j = high;</span><br><span class="line">    <span class="keyword">if</span>(low &gt; high)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//基准值</span></span><br><span class="line">    <span class="keyword">int</span> standard = arr[low];</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(standard &lt; arr[j] &amp;&amp; i &lt; j)</span><br><span class="line">        &#123;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(standard &gt; arr[i] &amp;&amp; i &lt; j)</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">            arr[i] = arr[j];</span><br><span class="line">            arr[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//调整到基准值最终的位置</span></span><br><span class="line">    arr[low] = arr[i];</span><br><span class="line">    arr[i] = standard;</span><br><span class="line">    <span class="comment">//递归调用快速排序子序列</span></span><br><span class="line">    QuickSort(arr, low, j - <span class="number">1</span>);</span><br><span class="line">    QuickSort(arr, j +<span class="number">1</span>, high);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="5-归并排序"><a href="#5-归并排序" class="headerlink" title="5. 归并排序"></a>5. 归并排序</h2><ul>
-<li><p>二路归并排序</p>
-<blockquote>
-<p>归并是指将两个或两个以上的 <strong>有序序列</strong> 组合成一个新的有序序列。初始序列有n个元素，可以看成有n个有序的子序列，每个子序列的长度为1，再两两归并，得到n/2个长度为2有序子序列，再两两归并，直到得到一个n长度的有序序列，该方法为2路归并排序。  <strong>具体的方法</strong>：先递归拆分到只包含单个元素的子序列，再两两合并。分治法的思想，是一种稳定的排序方法。</p>
-</blockquote>
-<p>代码实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> [] MergeSort(<span class="keyword">int</span> [] arr)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr.length &lt; <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid = arr.length / <span class="number">2</span>;</span><br><span class="line">    <span class="comment">//imports java.util.Arrays</span></span><br><span class="line">    <span class="keyword">int</span> [] left = Arrays.copyOfRange(arr, <span class="number">0</span> ,mid);</span><br><span class="line">    <span class="keyword">int</span> [] right = Arrays.copyOfRange(arr, mid, arr.length);</span><br><span class="line">    <span class="keyword">return</span> Merge(MergeSort(left), MergeSort(right));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//将两个有序子序列合并排序成一个有序序列</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> [] Merge(<span class="keyword">int</span> [] left, <span class="keyword">int</span> [] right)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> [] result = <span class="keyword">new</span> <span class="keyword">int</span> [left.length + right.length];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> index = <span class="number">0</span>, i = <span class="number">0</span>, j = <span class="number">0</span>; index &lt; result.length; index++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//当左边有序子序列都插入结果序列后</span></span><br><span class="line">        <span class="keyword">if</span>(i &gt;= left.length)</span><br><span class="line">        &#123;</span><br><span class="line">            result[index] = right[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//当右边有序子序列都插入结果序列后</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(j &gt;= right.length)</span><br><span class="line">        &#123;</span><br><span class="line">            result[index] = left[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//由于左右两个子序列都是有序序列，因此从第一个元素开始比较</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(left[i] &gt; right[j])</span><br><span class="line">        &#123;</span><br><span class="line">            result[index] = right[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            result[index] = left[i++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>博客参考链接：<br>1.<a href="https://blog.csdn.net/hellozhxy/article/details/79911867" target="_blank" rel="noopener">十大经典排序总结</a><br>2.<a href="https://blog.csdn.net/liang_gu/article/details/80627548#commentBox" target="_blank" rel="noopener">常见的7种排序算法</a><br>3.<a href="https://blog.csdn.net/shujuelin/article/details/82423852" target="_blank" rel="noopener">快速排序</a>  </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/Hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JCZhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Striver">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/20/Hexo/" itemprop="url">Hexo usage</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T14:05:14+08:00">
-                2019-06-20
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-08T10:24:02+08:00">
-                2019-07-08
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>本篇文章主要讲述使用Hexo写博客的一些技巧和注意事项</p>
-<hr>
-<h2 id="添加分类和标签"><a href="#添加分类和标签" class="headerlink" title="添加分类和标签"></a>添加分类和标签</h2><ul>
-<li>分类  <blockquote>
-<p>命令行进入博客（hexo）所在的文件夹，执行<code>hexo new page categories</code>,成功后自动生成source/categories/index.md，再修改index.md文件。再给文章添加相应的<code>categories</code>属性。  </p>
-</blockquote>
-</li>
-<li>标签<blockquote>
-<p>同理，执行<code>hexo new page tags</code>,再修改对应的index.md文件。最后再给文章添加<code>tags</code>属性  </p>
-</blockquote>
-</li>
-</ul>
-<hr>
-<h2 id="博客插入图片"><a href="#博客插入图片" class="headerlink" title="博客插入图片"></a>博客插入图片</h2><ol>
-<li><p>使用绝对路径<br>将所有项目的图片都统一放在`source/images文件夹中，访问显示图片可用绝对地址，图片的地址如 <strong>/images/image.jpg</strong> ，这样图片可在首页和文章中都可访问到</p>
-</li>
-<li><p>使用相对路径<br>图片除了可以放在统一的images文件夹中，还可以放在文章自己的目录中，通过配置博客根目录下<code>_config.yml</code>来生成。将其中的配置项<code>post_asset_folder: true</code>后，执行<code>hexo new post_name</code>，在source/_posts中生成文章post_name.md和同名文件夹post_name。我们将图片放在post_name文件夹中，通过image.jpg可直接引用。但是该方法只能在文章中显示图片，为了能在首页显示图片，可以用以下方法：<br><img src="/images/Hexo_001.png" alt="显示方法"></p>
-</li>
-<li>使用图床</li>
-</ol>
-<h2 id="发表博客的步骤"><a href="#发表博客的步骤" class="headerlink" title="发表博客的步骤"></a>发表博客的步骤</h2><blockquote>
-<p>首先命令行进入hexo文件夹下<code>hexo new file_name</code>，这样在source/_post文件夹下多了.md文件，或者直接将写好的markdown文件放入对应的文件夹，注意需要额外添加开头信息（Front-matter）。当编辑好后，可以先通过命令<code>hexo s -debug</code>在本地浏览器的localhost：4000预览博文效果。最后<code>hexo g,hexo d</code>生成和部署</p>
-</blockquote>
-<hr>
-<h2 id="创建表格"><a href="#创建表格" class="headerlink" title="创建表格"></a>创建表格</h2><p><img src="/images/Hexo_002.png" alt="表格语法格式"><br><img src="/images/Hexo_003.jpeg" alt="表格对齐方式"><br><strong>表格部分需要和正文部分空1行以上，否则表格不显示</strong></p>
-<h2 id="Markdown语法进阶"><a href="#Markdown语法进阶" class="headerlink" title="Markdown语法进阶"></a>Markdown语法进阶</h2><h2 id="Hexo-Github博客建站指南"><a href="#Hexo-Github博客建站指南" class="headerlink" title="Hexo+Github博客建站指南"></a>Hexo+Github博客建站指南</h2><p>这是博客建站的参考链接<a href="https://zhuanlan.zhihu.com/p/26625249" target="_blank" rel="noopener">知乎</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/07/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JCZhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Striver">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/07/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-07T10:54:01+08:00">
-                2019-05-07
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-05-07T10:54:01+08:00">
-                2019-05-07
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <p>编辑中</p>
 
           
         
@@ -2458,6 +2187,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -2501,7 +2234,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2512,7 +2245,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2523,7 +2256,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

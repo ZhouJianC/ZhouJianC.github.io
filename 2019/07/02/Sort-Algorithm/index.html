@@ -88,7 +88,7 @@
 <meta property="og:description" content="1. 综述  本篇博客主要讲述几种常见的排序算法，其算法思想和实现过程。  常见术语：  稳定性：两个数a和b，且a = b，排序后a和b前后顺序不变，反之不稳定。时间复杂度：一个算法执行所耗费的时间空间复杂度：运行完算法所需内存的大小内排序：所有排序操作都在内存中进行外排序：数据太大，排序操作需要内存和磁盘之间数据传输完成    算法总结：      排序算法 平均时间复杂度 最好情况 最坏情况">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/Sort_Algorithm_01.png">
-<meta property="og:updated_time" content="2020-09-14T15:41:38.480Z">
+<meta property="og:updated_time" content="2020-10-14T12:16:33.031Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法">
 <meta name="twitter:description" content="1. 综述  本篇博客主要讲述几种常见的排序算法，其算法思想和实现过程。  常见术语：  稳定性：两个数a和b，且a = b，排序后a和b前后顺序不变，反之不稳定。时间复杂度：一个算法执行所耗费的时间空间复杂度：运行完算法所需内存的大小内排序：所有排序操作都在内存中进行外排序：数据太大，排序操作需要内存和磁盘之间数据传输完成    算法总结：      排序算法 平均时间复杂度 最好情况 最坏情况">
@@ -300,8 +300,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-09-14T23:41:38+08:00">
-                2020-09-14
+              <time title="更新于" itemprop="dateModified" datetime="2020-10-14T20:16:33+08:00">
+                2020-10-14
               </time>
             
           </span>
@@ -485,7 +485,7 @@
 <p>快速排序使用 <strong>分治法</strong> ，把一个串分为两个子串。基本思想：挑选一个元素作为“基准”（一般选择第一个元素），经过一趟排序后，将小于基准的元素放在基准元素前面，大于的放在基准元素后面，以基准值为分界线，分为两个子序列，同时基准值位置为最终位置。接着对两个子序列分别进行递归算法调用快速排序。 具体做法：设置两个指针low、high分别指向待排序列的开头和末尾，记录下基准值（待排序列的第一个元素），然后先从high指针开始向前走，找到小于基准值的元素并停下，之后low指针向后走，找到大于基准值的元素并停下，在两个指针位置没有重合的情况下，并且都停下后，则交换两个指针所指的元素，继续往前往后走，当两个指针重合后，则交换基准位置和指针位置，第一轮结束，分为以基准值为分界线的两个子序列。递归继续</p>
 </blockquote>
 <p>代码实现</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> []arr, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = low;</span><br><span class="line">    <span class="keyword">int</span> j = high;</span><br><span class="line">    <span class="keyword">if</span>(low &gt; high)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//基准值</span></span><br><span class="line">    <span class="keyword">int</span> standard = arr[low];</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(standard &lt; arr[j] &amp;&amp; i &lt; j)</span><br><span class="line">        &#123;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(standard &gt; arr[i] &amp;&amp; i &lt; j)</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">            arr[i] = arr[j];</span><br><span class="line">            arr[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//调整到基准值最终的位置</span></span><br><span class="line">    arr[low] = arr[i];</span><br><span class="line">    arr[i] = standard;</span><br><span class="line">    <span class="comment">//递归调用快速排序子序列</span></span><br><span class="line">    QuickSort(arr, low, j - <span class="number">1</span>);</span><br><span class="line">    QuickSort(arr, j +<span class="number">1</span>, high);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> []arr, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = low;</span><br><span class="line">    <span class="keyword">int</span> j = high;</span><br><span class="line">    <span class="keyword">if</span>(low &gt; high)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//基准值</span></span><br><span class="line">    <span class="keyword">int</span> standard = arr[low];</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(standard &lt;= arr[j] &amp;&amp; i &lt; j)</span><br><span class="line">        &#123;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(standard &gt;= arr[i] &amp;&amp; i &lt; j)</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">            arr[i] = arr[j];</span><br><span class="line">            arr[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//调整到基准值最终的位置</span></span><br><span class="line">    arr[low] = arr[i];</span><br><span class="line">    arr[i] = standard;</span><br><span class="line">    <span class="comment">//递归调用快速排序子序列</span></span><br><span class="line">    QuickSort(arr, low, j - <span class="number">1</span>);</span><br><span class="line">    QuickSort(arr, j +<span class="number">1</span>, high);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="5-归并排序"><a href="#5-归并排序" class="headerlink" title="5. 归并排序"></a>5. 归并排序</h2><ul>
@@ -619,7 +619,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -630,7 +630,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -641,7 +641,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
