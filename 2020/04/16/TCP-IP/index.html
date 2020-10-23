@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/images/TCP-IP_01.png">
 <meta property="og:image" content="http://yoursite.com/images/TCP-IP_02.png">
 <meta property="og:image" content="http://yoursite.com/images/TCP-IP_03.png">
-<meta property="og:updated_time" content="2020-09-20T10:51:49.942Z">
+<meta property="og:updated_time" content="2020-10-19T07:55:31.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP三次握手四次挥手">
 <meta name="twitter:description" content="综述 TCP是一种面向连接的、可靠的、基于字节流的传输层通信协议。在发送数据前，通讯双方必须在彼此间建立一条连接。所谓的“连接”，其实就是客服端和服务端保存的一份关于对方的信息、比如ip地址、端口号等。   TCP可以看成是一种字节流，它会处理IP层或以下的层的丢包、重复以及错误问题。在连接的建立过程中，双方需要交换一些连接的参数。这些参数可以放在TCP头部。   一个TCP连接由一个4元组构成，">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-09-20T18:51:49+08:00">
-                2020-09-20
+              <time title="更新于" itemprop="dateModified" datetime="2020-10-19T15:55:31+08:00">
+                2020-10-19
               </time>
             
           </span>
@@ -446,6 +446,9 @@
 <h2 id="如果已经建立了连接，但是客户端突然出现故障了怎么办"><a href="#如果已经建立了连接，但是客户端突然出现故障了怎么办" class="headerlink" title="如果已经建立了连接，但是客户端突然出现故障了怎么办"></a>如果已经建立了连接，但是客户端突然出现故障了怎么办</h2><blockquote>
 <p>TCP设有一个保活计时器，客户端如果出现故障，服务器不能一直等下去，白白浪费资源。服务器每收到一次客户端的请求后都会重新复位这个计时器，时间通常是设置为2小时，若两小时还没有收到客户端的任何数据，服务器就会发送一个探测报文段，以后每隔75秒钟发送一次。若一连发送10个探测报文仍然没反应，服务器就认为客户端出了故障，接着就关闭连接  </p>
 </blockquote>
+<h2 id="TCP状态机"><a href="#TCP状态机" class="headerlink" title="TCP状态机"></a>TCP状态机</h2><blockquote>
+<p>待完善</p>
+</blockquote>
 <p>博客参考链接：<br>1.<a href="https://blog.csdn.net/ThinkWon/article/details/104903925" target="_blank" rel="noopener">TCP/IP</a></p>
 
       
@@ -566,7 +569,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -621,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#综述"><span class="nav-number">1.</span> <span class="nav-text">综述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP报文头部"><span class="nav-number">2.</span> <span class="nav-text">TCP报文头部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">3.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">4.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TIME-WAIT-和-CLOSE-WAIT"><span class="nav-number">5.</span> <span class="nav-text">TIME_WAIT 和 CLOSE_WAIT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为啥TCP连接时候是3次？2次不行吗"><span class="nav-number">6.</span> <span class="nav-text">为啥TCP连接时候是3次？2次不行吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么TCP连接的时候是3次，关闭的时候却是4次"><span class="nav-number">7.</span> <span class="nav-text">为什么TCP连接的时候是3次，关闭的时候却是4次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么客户端发出第四次挥手的确认报文后要等2MSL的时间才能释放TCP连接"><span class="nav-number">8.</span> <span class="nav-text">为什么客户端发出第四次挥手的确认报文后要等2MSL的时间才能释放TCP连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果已经建立了连接，但是客户端突然出现故障了怎么办"><span class="nav-number">9.</span> <span class="nav-text">如果已经建立了连接，但是客户端突然出现故障了怎么办</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#综述"><span class="nav-number">1.</span> <span class="nav-text">综述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP报文头部"><span class="nav-number">2.</span> <span class="nav-text">TCP报文头部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">3.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">4.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TIME-WAIT-和-CLOSE-WAIT"><span class="nav-number">5.</span> <span class="nav-text">TIME_WAIT 和 CLOSE_WAIT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为啥TCP连接时候是3次？2次不行吗"><span class="nav-number">6.</span> <span class="nav-text">为啥TCP连接时候是3次？2次不行吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么TCP连接的时候是3次，关闭的时候却是4次"><span class="nav-number">7.</span> <span class="nav-text">为什么TCP连接的时候是3次，关闭的时候却是4次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么客户端发出第四次挥手的确认报文后要等2MSL的时间才能释放TCP连接"><span class="nav-number">8.</span> <span class="nav-text">为什么客户端发出第四次挥手的确认报文后要等2MSL的时间才能释放TCP连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果已经建立了连接，但是客户端突然出现故障了怎么办"><span class="nav-number">9.</span> <span class="nav-text">如果已经建立了连接，但是客户端突然出现故障了怎么办</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP状态机"><span class="nav-number">10.</span> <span class="nav-text">TCP状态机</span></a></li></ol></div>
             
 
           </div>
